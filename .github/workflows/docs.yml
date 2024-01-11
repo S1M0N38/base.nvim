@@ -1,29 +1,56 @@
 name: Docs
 
-on:
-  push:
-    paths:
-      - 'README.md'
-  pull_request:
-    paths:
-      - 'README.md'
+on: [push]
 
 jobs:
-  docs:
-    runs-on: ubuntu-latest
+  build-sources:
+    name: Generate docs
 
     permissions:
       contents: write
 
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            url: https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz
     steps:
       - uses: actions/checkout@v3
-      - name: panvimdoc
-        uses: kdheepak/panvimdoc@main
+      - run: date +%F > todays-date
+      - name: Restore cache for today's nightly.
+        uses: actions/cache@v3
         with:
-          vimdoc: my-template-docs
-          version: "Neovim >= 0.9.0"
-          demojify: true
-          treesitter: true
+          path: _neovim
+          key: ${{ runner.os }}-${{ matrix.url }}-${{ hashFiles('todays-date') }}
+
+      - name: Prepare
+        run: |
+          test -d _neovim || {
+            mkdir -p _neovim
+            curl -sL ${{ matrix.url }} | tar xzf - --strip-components=1 -C "${PWD}/_neovim"
+          }
+          mkdir -p ~/.local/share/nvim/site/pack/vendor/start
+          git clone --depth 1 https://github.com/nvim-lua/plenary.nvim ~/.local/share/nvim/site/pack/vendor/start/plenary.nvim
+          git clone https://github.com/tjdevries/tree-sitter-lua ~/.local/share/nvim/site/pack/vendor/start/tree-sitter-lua
+          ln -s $(pwd) ~/.local/share/nvim/site/pack/vendor/start
+
+      - name: Build parser
+        run: |
+          # We have to build the parser every single time to keep up with parser changes
+          cd ~/.local/share/nvim/site/pack/vendor/start/tree-sitter-lua
+          git checkout 86f74dfb69c570f0749b241f8f5489f8f50adbea
+          make dist
+          cd -
+
+      - name: Generating docs
+        run: |
+          export PATH="${PWD}/_neovim/bin:${PATH}"
+          export VIM="${PWD}/_neovim/share/nvim/runtime"
+          nvim --version
+          make docgen
+
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
