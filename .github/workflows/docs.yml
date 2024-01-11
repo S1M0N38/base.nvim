@@ -2,11 +2,11 @@ name: Docs
 
 on:
   push:
-    paths-ignore:
+    paths:
       - '**/README.md'
   pull_request:
-    paths-ignore:
-      - '**/README.md'
+    paths:
+      - 'README.md'
 
 jobs:
   docs:
