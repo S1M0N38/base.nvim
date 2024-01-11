@@ -16,3 +16,15 @@ jobs:
         uses: nvim-neorocks/luarocks-tag-release@v5
         env:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
+        with:
+          # detailed_description: |
+          #   Publishes packages to LuaRocks when a git tag is pushed.
+          #   Automatically generates a rockspec from repository metadata
+          #   and tests the installation before releasing.
+          dependencies: |
+            plenary.nvim
+          test_interpreters: |
+            neovim-stable
+            neovim-nightly
+          copy_directories: |
+            {{ neovim.plugin.dirs }}
