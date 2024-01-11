@@ -1,14 +1,14 @@
-name: LuaRocks release
+name: Release
+
 on:
   push:
     tags:
       - "v*"
-  pull_request:
 
 jobs:
   luarocks-release:
-    runs-on: ubuntu-latest
     name: LuaRocks upload
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,8 +23,5 @@ jobs:
           #   and tests the installation before releasing.
           dependencies: |
             plenary.nvim
-          test_interpreters: |
-            neovim-stable
-            neovim-nightly
           copy_directories: |
             {{ neovim.plugin.dirs }}
