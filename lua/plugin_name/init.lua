@@ -28,6 +28,19 @@ plugin_name.setup = function(options)
   require("plugin_name.config").__setup(options)
 end
 
+---Print the result of the comparison
+---@param a number: first number
+---@param b number: second number
+---@param func string: "max" or "min"
+---@param result number: result
+plugin_name.print = function(a, b, func, result)
+  local s = "The " .. func .. " of " .. a .. " and " .. b .. " is " .. result
+  if require("plugin_name.config").options.round then
+    s = s .. " (rounded)"
+  end
+  print(s)
+end
+
 --- Calcululate the max or min of two numbers and round the result if specified by options
 ---@param a number: first number
 ---@param b number: second number
@@ -40,15 +53,7 @@ plugin_name.main = function(a, b, func)
   if options.round then
     result = mymath.round(result)
   end
-
-  local str = "The " .. func .. " of " .. a .. " and " .. b .. " is "
-  if options.round then
-    str = str .. mymath.round(result) .. " (rounded)"
-  else
-    str = str .. result
-  end
-  print(str)
-
+  plugin_name.print(a, b, func, result)
   return result
 end
 
