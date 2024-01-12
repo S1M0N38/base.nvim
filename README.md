@@ -1,47 +1,59 @@
-# A Neovim Plugin Template
+# My Awesome Plugin
 
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/ellisonleao/nvim-plugin-template/lint-test.yml?branch=main&style=for-the-badge)
-![Lua](https://img.shields.io/badge/Made%20with%20Lua-blueviolet.svg?style=for-the-badge&logo=lua)
+A simple way to kickstart your Neovim plugin development like a pro:
 
-A template repository for Neovim plugins.
+## Plugin Structure
 
-## Using it
+- `plugin/plugin_name.lua` - *the main file, the one loaded by the plugin manager*
 
-Via `gh`:
+- `lua/plugin_name/`
 
-```
-$ gh repo create my-plugin -p ellisonleao/nvim-plugin-template
-```
+  - `init.lua` - *the main file of the plugin, the one loaded by the `plugin/plugin_name.lua`*
+  - `math.lua` - *an example of module, here we define simple math functions*
+  - `config.lua` - *store plugin default options and extend them with user's ones*
 
-Via github web page:
+- `tests/pluin_name/`
 
-Click on `Use this template`
+  - `plugin_name_spec.lua` - *plugin tests. Add here other `*_spec.lua` for further testing*
 
-![](https://docs.github.com/assets/cb-36544/images/help/repository/use-this-template-button.png)
+- `scripts/`
 
-## Features and structure
+  - `docs.lua` - *Lua script to auto-generate `doc/plugin_name.txt` docs file from code annotations*
+  - `minimal_init.lua` - *start Neovim instances with minimal plugin configuration. Used in `Makefile`*
 
-- 100% Lua
-- Github actions for:
-  - running tests using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim) and [busted](https://olivinelabs.com/busted/)
-  - check for formatting errors (Stylua)
-  - vimdocs autogeneration from README.md file
-  - luarocks release (LUAROCKS_API_KEY secret configuration required)
+- `Makefile` - *script for launching **tests**, **linting** and docs generation*
 
-### Plugin structure
+The other files are not important and there will be mentioned in the following sections.
 
-```
-.
-├── lua
-│   ├── plugin_name
-│   │   └── module.lua
-│   └── plugin_name.lua
-├── Makefile
-├── plugin
-│   └── plugin_name.lua
-├── README.md
-├── tests
-│   ├── minimal_init.lua
-│   └── plugin_name
-│       └── plugin_name_spec.lua
-```
+## Tests
+
+<!-- TODO: how tests are run -->
+
+<!-- HACK: local development -->
+
+- Run tests using plenary.nvim
+
+## Docs Generation
+
+<!-- TODO: what is interesting about these two generation methods? -->
+
+- Generate Docs from the `README.md` using ...
+- Generate Docs from code annotations using ...
+
+## Linting and Formatting
+
+<!-- TODO: explain linting and formatting differences -->
+
+<!-- HACK: local development -->
+
+- Linting using Luacheck ...
+- Formatting using Style ...
+
+## Deployment
+
+<!-- TODO: explain tags and releases -->
+
+<!-- HACK: need to setup Luarocks API key -->
+
+- Github release on tag ...
+- LuaRocks release on tag ...
