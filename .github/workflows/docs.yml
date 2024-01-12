@@ -49,7 +49,7 @@ jobs:
           export PATH="${PWD}/_neovim/bin:${PATH}"
           export VIM="${PWD}/_neovim/share/nvim/runtime"
           nvim --version
-          mkdir "${PWD}/doc" || make docs
+          mkdir "doc" || make docs
           cat doc/*.txt
 
       - uses: actions/checkout@v4
