@@ -49,10 +49,8 @@ jobs:
           export PATH="${PWD}/_neovim/bin:${PATH}"
           export VIM="${PWD}/_neovim/share/nvim/runtime"
           nvim --version
-          mkdir "doc" || make docs
-          cat doc/*.txt
+          make docs
 
-      - uses: actions/checkout@v4
       - name: Push changes
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
