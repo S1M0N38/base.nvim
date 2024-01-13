@@ -29,7 +29,7 @@ A simple way to kickstart your Neovim plugin development like a pro with:
 1. Kickstart with
 
 ```sh
-make init plugin=the_name_of_your_plugin
+make init name=the_name_of_your_plugin
 ```
 
 Then, modify the `README.md`, `.github/workflows/release.yml`, and `LICENSE` files to your liking.
