@@ -10,6 +10,7 @@ A simple way to kickstart your Neovim plugin development like a pro with:
 
 **Usage**:
 
+1. Read this very README.md.
 1. On the top right of this page, click on `Use this template` > `Create a new repository`.
 1. Clone your new repo and `cd` into it.
 1. Run `make init name=the_name_of_your_plugin`, it will replace all the `my_awesome_plugin` occurrences in the template with the name of your plugin.
@@ -39,7 +40,7 @@ The other files are not important and will be mentioned in the following section
 
 ## Tests
 
-Tests are run using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim), a Lua library for Neovim plugin development.
+Tests are run using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim), a Lua library for Neovim plugin development. [Here](https://github.com/nvim-lua/plenary.nvim/blob/master/TESTS_README.md) is how to write tests using plenary.
 
 To run the tests on your local machine for local development, you can:
 
@@ -51,7 +52,7 @@ When running tests on CI, plenary.nvim is cloned, and the tests are run using `m
 ## Docs Generation
 
 In the Vim/Neovim world, it's customary to provide documentation in the Vim style, a txt file with tags and sections that can be navigated using the `:help` command.
-In Lua, we can add annotations to our code, i.e., comments starting with `---`, so that we can have the full signature of functions and modules for LSP sorcery.
+In Lua, we can add annotations to our code, i.e., comments starting with `---`, so that we can have the full signature of functions and modules for LSP sorcery. [Here](https://github.com/tjdevries/tree-sitter-lua/blob/master/HOWTO.md) is how to write code annotations.
 
 Lua code annotations can be used to generate the Vim style docs using the `docgen` module from [tree-sitter-lua](https://github.com/tjdevries/tree-sitter-lua). This is an alternative tree-sitter parser, so it's not installed by the tree-sitter plugin. To generate the docs locally, you must clone the tree-sitter-lua repo in the same directory as the my_awesome_plugin repo and use `make docs`.
 
@@ -72,3 +73,12 @@ Tags can be used to trigger releases, i.e., publish a specific version of the pl
 
 - A new release on GitHub is automatically created when a new tag is pushed.
 - A new release on LuaRocks is automatically created when a new tag is pushed. It requires adding `LUAROCKS_API_KEY` as a secret in the repo settings.
+
+## Acknowledgments
+
+Neovim is growing a nice ecosystem but some parts of plugin development are sometimes obscure. This template is an attempt to put together best practices by copying:
+
+- [ellisonleao/nvim-plugin-template](https://github.com/ellisonleao/nvim-plugin-template) - *Plugin Structure*
+- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - *Tests, lint, docs generation*
+
+I highly suggest [this video tutorial](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries), a walk-through of Neovim plugin development process.
