@@ -1,9 +1,10 @@
+.PHONY: test lint docs init
 
-TESTS_DIR=tests/
-PLUGIN_DIR=lua/
+TESTS_DIR := tests/
+PLUGIN_DIR := lua/
 
-DOC_GEN_SCRIPT=./scripts/docs.lua
-MINIMAL_INIT=./scripts/minimal_init.vim
+DOC_GEN_SCRIPT := ./scripts/docs.lua
+MINIMAL_INIT := ./scripts/minimal_init.vim
 
 test:
 	nvim --headless --noplugin -u ${MINIMAL_INIT} \
