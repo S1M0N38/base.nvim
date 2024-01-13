@@ -95,9 +95,9 @@ Tags can be used to trigger releases, i.e., publish a specific version of the pl
 
 ## 👏 Acknowledgments
 
-Neovim is growing a nice ecosystem but some parts of plugin development are sometimes obscure. This template is an attempt to put together best practices by copying:
+Neovim is growing a nice ecosystem, but some parts of plugin development are sometimes obscure. This template is an attempt to put together best practices by copying:
 
 - [ellisonleao/nvim-plugin-template](https://github.com/ellisonleao/nvim-plugin-template) - *Plugin Structure*
 - [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - *Tests, lint, docs generation*
 
-I highly suggest [this video tutorial](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries), a walk-through of Neovim plugin development process.
+I highly suggest [this video tutorial](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries), a walkthrough of the Neovim plugin development process.
