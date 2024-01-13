@@ -12,7 +12,7 @@
   </a>
 </p>
 
----
+______________________________________________________________________
 
 A simple way to kickstart your Neovim plugin development like a pro with:
 
@@ -24,10 +24,15 @@ A simple way to kickstart your Neovim plugin development like a pro with:
 
 **Usage**:
 
-1. Read this very README.md.
 1. On the top right of this page, click on `Use this template` > `Create a new repository`.
 1. Clone your new repo and `cd` into it.
-1. Run `make init name=the_name_of_your_plugin`, it will replace all the `my_awesome_plugin` occurrences in the template with the name of your plugin.
+1. Kickstart with
+
+```sh
+make init plugin=the_name_of_your_plugin
+```
+
+Then, modify the `README.md` and `LICENSE` files to your liking.
 
 ## 📁 Plugin Structure
 
