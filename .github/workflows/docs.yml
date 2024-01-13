@@ -55,8 +55,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5.0.0
         with:
           file_pattern: 'doc/*.txt'
-          commit_message: "docs(build): auto-generate vimdoc"
+          commit_message: "docs(build): auto-generate doc"
           commit_user_name: "github-actions[bot]"
           commit_user_email: "github-actions[bot]@users.noreply.github.com"
           commit_author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
-          add_options: '--force'
