@@ -12,25 +12,25 @@ A simple way to kickstart your Neovim plugin development like a pro with:
 
 1. On the top right of this page, click on `Use this template` > `Create a new repository`.
 1. Clone your new repo and `cd` into it.
-1. Replace all occurrences of the placeholder `plugin_name` with the plugin name you choose, both in file and directory names.
+1. Run `make init name=the_name_of_your_plugin`, it will replace all the `my_awesome_plugin` occurrences in the template with the name of your plugin.
 
 ## Plugin Structure
 
-- `plugin/plugin_name.lua` - *the main file, the one loaded by the plugin manager*
+- `plugin/my_awesome_plugin.lua` - *the main file, the one loaded by the plugin manager*
 
-- `lua/plugin_name/`
+- `lua/my_awesome_plugin/`
 
-  - `init.lua` - *the main file of the plugin, the one loaded by `plugin/plugin_name.lua`*
+  - `init.lua` - *the main file of the plugin, the one loaded by `plugin/my_awesome_plugin.lua`*
   - `math.lua` - *an example module, here we define simple math functions*
   - `config.lua` - *store plugin default options and extend them with user's ones*
 
-- `tests/plugin_name/`
+- `tests/my_awesome_plugin/`
 
-  - `plugin_name_spec.lua` - *plugin tests. Add other `*_spec.lua` files here for further testing*
+  - `my_awesome_plugin_spec.lua` - *plugin tests. Add other `*_spec.lua` files here for further testing*
 
 - `scripts/`
 
-  - `docs.lua` - *Lua script to auto-generate `doc/plugin_name.txt` docs file from code annotations*
+  - `docs.lua` - *Lua script to auto-generate `doc/my_awesome_plugin.txt` docs file from code annotations*
   - `minimal_init.lua` - *start Neovim instances with minimal plugin configuration. Used in `Makefile`*
 
 - `Makefile` - *script for launching **tests**, **linting**, and docs generation*
@@ -44,7 +44,7 @@ Tests are run using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim), a 
 To run the tests on your local machine for local development, you can:
 
 - Have the plenary plugin in your Neovim configuration and use `:PlenaryBustedDirectory tests`.
-- Have the plenary repo cloned in the same directory as the plugin_name repo and use `make test`.
+- Have the plenary repo cloned in the same directory as the my_awesome_plugin repo and use `make test`.
 
 When running tests on CI, plenary.nvim is cloned, and the tests are run using `make test`.
 
@@ -53,7 +53,7 @@ When running tests on CI, plenary.nvim is cloned, and the tests are run using `m
 In the Vim/Neovim world, it's customary to provide documentation in the Vim style, a txt file with tags and sections that can be navigated using the `:help` command.
 In Lua, we can add annotations to our code, i.e., comments starting with `---`, so that we can have the full signature of functions and modules for LSP sorcery.
 
-Lua code annotations can be used to generate the Vim style docs using the `docgen` module from [tree-sitter-lua](https://github.com/tjdevries/tree-sitter-lua). This is an alternative tree-sitter parser, so it's not installed by the tree-sitter plugin. To generate the docs locally, you must clone the tree-sitter-lua repo in the same directory as the plugin_name repo and use `make docs`.
+Lua code annotations can be used to generate the Vim style docs using the `docgen` module from [tree-sitter-lua](https://github.com/tjdevries/tree-sitter-lua). This is an alternative tree-sitter parser, so it's not installed by the tree-sitter plugin. To generate the docs locally, you must clone the tree-sitter-lua repo in the same directory as the my_awesome_plugin repo and use `make docs`.
 
 When running docs generation on CI, tree-sitter-lua is cloned, and the docs are generated using `make docs`.
 
