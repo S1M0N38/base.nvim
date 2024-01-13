@@ -1,4 +1,18 @@
-# 🌟 My Awesome Plugin
+<h1 align="center">✨ My Awesome Plugin ✨</h1>
+
+<p align="center">
+  <a href="https://github.com/S1M0N38/my-awesome-plugin.nvim/actions/workflows/test.yml">
+    <img alt="Tests" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/my-awesome-plugin.nvim/test.yml?style=for-the-badge&label=Tests"/>
+  </a>
+  <a href="https://github.com/S1M0N38/my-awesome-plugin.nvim/actions/workflows/docs.yml">
+    <img alt="Docs" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/my-awesome-plugin.nvim/docs.yml?style=for-the-badge&label=Docs"/>
+  </a>
+  <a href="https://github.com/S1M0N38/my-awesome-plugin.nvim/releases">
+    <img alt="Release" src="https://img.shields.io/github/v/release/S1M0N38/my-awesome-plugin.nvim?style=for-the-badge"/>
+  </a>
+</p>
+
+---
 
 A simple way to kickstart your Neovim plugin development like a pro with:
 
