@@ -1,4 +1,4 @@
-# My Awesome Plugin
+# 🌟 My Awesome Plugin
 
 A simple way to kickstart your Neovim plugin development like a pro with:
 
@@ -15,7 +15,7 @@ A simple way to kickstart your Neovim plugin development like a pro with:
 1. Clone your new repo and `cd` into it.
 1. Run `make init name=the_name_of_your_plugin`, it will replace all the `my_awesome_plugin` occurrences in the template with the name of your plugin.
 
-## Plugin Structure
+## 📁 Plugin Structure
 
 - `plugin/my_awesome_plugin.lua` - *the main file, the one loaded by the plugin manager*
 
@@ -38,7 +38,7 @@ A simple way to kickstart your Neovim plugin development like a pro with:
 
 The other files are not important and will be mentioned in the following sections.
 
-## Tests
+## 🧪 Tests
 
 Tests are run using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim), a Lua library for Neovim plugin development. [Here](https://github.com/nvim-lua/plenary.nvim/blob/master/TESTS_README.md) is how to write tests using plenary.
 
@@ -49,7 +49,7 @@ To run the tests on your local machine for local development, you can:
 
 When running tests on CI, plenary.nvim is cloned, and the tests are run using `make test`.
 
-## Docs Generation
+## 📚 Docs Generation
 
 In the Vim/Neovim world, it's customary to provide documentation in the Vim style, a txt file with tags and sections that can be navigated using the `:help` command.
 In Lua, we can add annotations to our code, i.e., comments starting with `---`, so that we can have the full signature of functions and modules for LSP sorcery. [Here](https://github.com/tjdevries/tree-sitter-lua/blob/master/HOWTO.md) is how to write code annotations.
@@ -58,7 +58,7 @@ Lua code annotations can be used to generate the Vim style docs using the `docge
 
 When running docs generation on CI, tree-sitter-lua is cloned, and the docs are generated using `make docs`.
 
-## Linting and Formatting
+## 🧹 Linting and Formatting
 
 Linting highlights code that is syntactically correct but may not be the best practice and can lead to bugs or errors.
 Formatting is the process of transforming code into a standardized format that makes it easier to read and understand.
@@ -66,7 +66,7 @@ Formatting is the process of transforming code into a standardized format that m
 - [Luacheck](https://github.com/mpeterv/luacheck) is run by `make lint` using the configuration in the `.luacheckrc` file.
 - In CI, [Stylua](https://github.com/JohnnyMorganz/StyLua) is run after linting using the configuration in the `.stylua.toml` file.
 
-## Deployment
+## 🚀 Deployment
 
 [Tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) are how Git marks milestones in the commit history of a repository.
 Tags can be used to trigger releases, i.e., publish a specific version of the plugin on GitHub and LuaRocks.
@@ -74,7 +74,7 @@ Tags can be used to trigger releases, i.e., publish a specific version of the pl
 - A new release on GitHub is automatically created when a new tag is pushed.
 - A new release on LuaRocks is automatically created when a new tag is pushed. It requires adding `LUAROCKS_API_KEY` as a secret in the repo settings.
 
-## Acknowledgments
+## 👏 Acknowledgments
 
 Neovim is growing a nice ecosystem but some parts of plugin development are sometimes obscure. This template is an attempt to put together best practices by copying:
 
