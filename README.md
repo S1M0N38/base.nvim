@@ -32,7 +32,7 @@ A simple way to kickstart your Neovim plugin development like a pro with:
 make init plugin=the_name_of_your_plugin
 ```
 
-Then, modify the `README.md` and `LICENSE` files to your liking.
+Then, modify the `README.md`, `.github/workflows/release.yml`, and `LICENSE` files to your liking.
 
 ## 📁 Plugin Structure
 

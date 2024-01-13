@@ -17,10 +17,13 @@ jobs:
         env:
           LUAROCKS_API_KEY: ${{ secrets.LUAROCKS_API_KEY }}
         with:
-          # detailed_description: |
-          #   Publishes packages to LuaRocks when a git tag is pushed.
-          #   Automatically generates a rockspec from repository metadata
-          #   and tests the installation before releasing.
+          detailed_description: |
+            A simple way to kickstart your Neovim plugin development like a pro with:
+            - Plugin Structure
+            - Tests
+            - Docs Generation
+            - Linting and Formatting
+            - Deployment
           dependencies: |
             plenary.nvim
           copy_directories: |
