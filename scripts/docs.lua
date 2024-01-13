@@ -5,9 +5,9 @@ local docs = {}
 docs.test = function()
   -- Filepaths that should generate docs
   local input_files = {
-    "./lua/plugin_name/init.lua",
-    "./lua/plugin_name/config.lua",
-    "./lua/plugin_name/math.lua",
+    "./lua/my_awesome_plugin/init.lua",
+    "./lua/my_awesome_plugin/config.lua",
+    "./lua/my_awesome_plugin/math.lua",
   }
 
   -- Maybe sort them that depends what you want and need
@@ -16,7 +16,7 @@ docs.test = function()
   end)
 
   -- Output file
-  local output_file = "./doc/plugin_name.txt"
+  local output_file = "./doc/my_awesome_plugin.txt"
   local output_file_handle = io.open(output_file, "w")
   assert(output_file_handle, "Could not open " .. output_file)
 

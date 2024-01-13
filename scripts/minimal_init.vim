@@ -4,4 +4,4 @@ set rtp+=../tree-sitter-lua/
 
 runtime! plugin/plenary.vim
 runtime! plugin/ts_lua.vim
-runtime! plugin/plugin_name.lua
+runtime! plugin/my_awesome_plugin.lua

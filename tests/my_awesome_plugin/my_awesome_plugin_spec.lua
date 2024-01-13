@@ -1,6 +1,6 @@
-local plugin = require("plugin_name")
+local plugin = require("my_awesome_plugin")
 
-describe("plugin_name with default", function()
+describe("my_awesome_plugin with default", function()
   it("can compute max", function()
     plugin.setup({})
     assert.equals(3, plugin.main(2.5, 2.4, "max"))
@@ -13,7 +13,7 @@ describe("plugin_name with default", function()
   end)
 end)
 
-describe("plugin_name with custom options", function()
+describe("my_awesome_plugin with custom options", function()
   it("can compute max", function()
     plugin.setup({ round = false })
     assert.equals(2.5, plugin.main(2.5, 2.4, "max"))

@@ -1,4 +1,4 @@
----@tag plugin_name
+---@tag my_awesome_plugin
 
 ---@brief [[
 ---This is a template for a plugin. It is meant to be copied and modified.
@@ -12,20 +12,20 @@
 --- `:PluginName {number} {number} {max|min}`
 --- </pre>
 ---
---- The plugin can be configured using the |plugin_name.setup()| function.
+--- The plugin can be configured using the |my_awesome_plugin.setup()| function.
 ---
 ---@brief ]]
 
 ---@class PluginNameModule
 ---@field setup function: setup the plugin
 ---@field main function: calculate the max or min of two numbers and round the result if specified by options
-local plugin_name = {}
+local my_awesome_plugin = {}
 
 --- Setup the plugin
 ---@param options Config: config table
----@eval { ['description'] = require('plugin_name.config').__format_keys() }
-plugin_name.setup = function(options)
-  require("plugin_name.config").__setup(options)
+---@eval { ['description'] = require('my_awesome_plugin.config').__format_keys() }
+my_awesome_plugin.setup = function(options)
+  require("my_awesome_plugin.config").__setup(options)
 end
 
 ---Print the result of the comparison
@@ -33,9 +33,9 @@ end
 ---@param b number: second number
 ---@param func string: "max" or "min"
 ---@param result number: result
-plugin_name.print = function(a, b, func, result)
+my_awesome_plugin.print = function(a, b, func, result)
   local s = "The " .. func .. " of " .. a .. " and " .. b .. " is " .. result
-  if require("plugin_name.config").options.round then
+  if require("my_awesome_plugin.config").options.round then
     s = s .. " (rounded)"
   end
   print(s)
@@ -46,15 +46,15 @@ end
 ---@param b number: second number
 ---@param func string: "max" or "min"
 ---@return number: result
-plugin_name.main = function(a, b, func)
-  local options = require("plugin_name.config").options
-  local mymath = require("plugin_name.math")
+my_awesome_plugin.main = function(a, b, func)
+  local options = require("my_awesome_plugin.config").options
+  local mymath = require("my_awesome_plugin.math")
   local result = mymath[func](a, b)
   if options.round then
     result = mymath.round(result)
   end
-  plugin_name.print(a, b, func, result)
+  my_awesome_plugin.print(a, b, func, result)
   return result
 end
 
-return plugin_name
+return my_awesome_plugin
