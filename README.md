@@ -16,11 +16,11 @@ ______________________________________________________________________
 
 A simple way to kickstart your Neovim plugin development like a pro with:
 
-- [Plugin Structure](#plugin-structure)
-- [Tests](#tests)
-- [Docs Generation](#docs-generation)
-- [Linting and Formatting](#linting-and-formatting)
-- [Deployment](#deployment)
+- [Plugin Structure](#-plugin-structure)
+- [Tests](#-tests)
+- [Docs Generation](#-docs-generation)
+- [Linting and Formatting](#-linting-and-formatting)
+- [Deployment](#-deployment)
 
 **Usage**:
 
