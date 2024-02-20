@@ -51,7 +51,7 @@ Then, modify the `README.md`, `.github/workflows/release.yml`, and `LICENSE` fil
 - `scripts/`
 
   - `docs.lua` - *Lua script to auto-generate `doc/my_awesome_plugin.txt` docs file from code annotations*
-  - `minimal_init.lua` - *start Neovim instances with minimal plugin configuration. Used in `Makefile`*
+  - `minimal_init.vim` - *start Neovim instances with minimal plugin configuration. Used in `Makefile`*
 
 - `Makefile` - *script for launching **tests**, **linting**, and docs generation*
 
