@@ -40,7 +40,7 @@ jobs:
         run: |
           # We have to build the parser every single time to keep up with parser changes
           cd ~/.local/share/nvim/site/pack/vendor/start/tree-sitter-lua
-          git checkout 86f74dfb69c570f0749b241f8f5489f8f50adbea
+          git checkout 5429f4ed6865c43fbfb07001ad9bfe33ec6e96db
           make dist
           cd -
 
