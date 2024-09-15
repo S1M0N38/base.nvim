@@ -1,103 +1,116 @@
-<h1 align="center">✨ My Awesome Plugin ✨</h1>
+<h1 align="center">⛶&nbsp;&nbsp;base.nvim&nbsp;&nbsp;⛶ </h1>
 
 <p align="center">
-  <a href="https://github.com/S1M0N38/my-awesome-plugin.nvim/actions/workflows/test.yml">
-    <img alt="Tests" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/my-awesome-plugin.nvim/test.yml?style=for-the-badge&label=Tests"/>
+  <a href="https://github.com/S1M0N38/base.nvim/actions/workflows/run-tests.yml">
+    <img alt="Run Tests badge" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/base.nvim/tests.yml?style=for-the-badge&label=Tests"/>
   </a>
-  <a href="https://github.com/S1M0N38/my-awesome-plugin.nvim/actions/workflows/docs.yml">
-    <img alt="Docs" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/my-awesome-plugin.nvim/docs.yml?style=for-the-badge&label=Docs"/>
+  <a href="https://luarocks.org/modules/S1M0N38/base.nvim">
+    <img alt="LuaRocks badge" src="https://img.shields.io/luarocks/v/S1M0N38/base.nvim?style=for-the-badge&color=5d2fbf"/>
   </a>
-  <a href="https://github.com/S1M0N38/my-awesome-plugin.nvim/releases">
-    <img alt="Release" src="https://img.shields.io/github/v/release/S1M0N38/my-awesome-plugin.nvim?style=for-the-badge"/>
+  <a href="https://github.com/S1M0N38/base.nvim/releases">
+    <img alt="GitHub badge" src="https://img.shields.io/github/v/release/S1M0N38/base.nvim?style=for-the-badge&label=GitHub"/>
+  </a>
+  <a href="https://www.reddit.com/r/neovim/comments/...">
+    <img alt="Reddit badge" src="https://img.shields.io/badge/post-reddit?style=for-the-badge&label=Reddit&color=FF5700"/>
   </a>
 </p>
 
 ______________________________________________________________________
 
-A simple way to kickstart your Neovim plugin development like a pro with:
+Writing a Neovim plugin has become very easy. Lua Rocks! (pun intended), busted, LuaLS and CI/CD pipelines make the development process a breeze.
 
-- [Plugin Structure](#-plugin-structure)
-- [Tests](#-tests)
-- [Docs Generation](#-docs-generation)
-- [Linting and Formatting](#-linting-and-formatting)
-- [Deployment](#-deployment)
-
-**Usage**:
-
-1. On the top right of this page, click on `Use this template` > `Create a new repository`.
+1. Choose a name with the extension `.nvim` e.g., `your-plugin.nvim`.
+1. On the top right of this page, click on `Use this template` > `Create a new repository` with that name.
 1. Clone your new repo and `cd` into it.
-1. Kickstart with
+1. Rename `base` to `your-plugin` in the whole repo
+1. Rename `S1M0N38` to `your-github-username` in the whole repo
 
-```sh
-make init name=the_name_of_your_plugin
+### 🛠️ Setup
+
+- **Neovim** (≥ 0.10)
+
+- **[luarocks](https://luarocks.org/)**, **[busted](https://lunarmodules.github.io/busted/)** & **[nlua](https://github.com/mfussenegger/nlua)** (macOS [install.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/install-lua-luarocks-on-macos.sh) and [uninstall.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/uninstall-lua-luarocks-on-macos.sh) scripts)
+
+- **[lazy.nvim](https://github.com/folke/lazy.nvim)** & **[lazydev.nvim](https://github.com/folke/lazydev.nvim)**
+
+```lua
+{
+  {
+    "base.nvim",
+    dir = "/path/to/base.nvim",
+    lazy = false,
+    opts = {},
+    keys = {
+      {
+        "<leader>rb",
+        "<cmd>Lazy reload base.nvim<cr>",
+        desc = "Reload base.nvim",
+        mode = { "n", "v" },
+      },
+    },
+  },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        "${3rd}/luassert/library",
+        "${3rd}/busted/library",
+        "base.nvim",
+      }
+    },
+  },
+}
 ```
 
-Then, modify the `README.md`, `.github/workflows/release.yml`, and `LICENSE` files to your liking.
+### 📁 Plugin Structure
 
-## 📁 Plugin Structure
+- ***plugin/base.lua*** - the main file, the one loaded by the plugin manager.
 
-- `plugin/my_awesome_plugin.lua` - *the main file, the one loaded by the plugin manager*
+- ***spec/base_spec.lua*** - plugin tests. Add other ***\_spec.lua*** files here for further testing.
 
-- `lua/my_awesome_plugin/`
+- ***lua/base/***
 
-  - `init.lua` - *the main file of the plugin, the one loaded by `plugin/my_awesome_plugin.lua`*
-  - `math.lua` - *an example module, here we define simple math functions*
-  - `config.lua` - *store plugin default options and extend them with user's ones*
+  - ***init.lua*** - the main file of the plugin, the one loaded by ***plugin/base.lua***.
+  - ***health.lua*** - run checks of the plugin when `:checkhealth base` is called.
+  - ***types.lua*** - a [definition file](https://luals.github.io/wiki/definition-files/) where LuaCATS annotations are defined.
 
-- `tests/my_awesome_plugin/`
+### 🔍 Lua Language Server
 
-  - `my_awesome_plugin_spec.lua` - *plugin tests. Add other `*_spec.lua` files here for further testing*
+[Lua Language Server](https://github.com/luals/lua-language-server?tab=readme-ov-file) (LuaLS) is a language server providing autocompletion, hover, diagnostics, annotations support, formatting. The `lazydev.nvim` plugin takes care of configuring it properly.
 
-- `scripts/`
+- ***.editorconfig*** - file format for defining coding styles (cross-editor).
 
-  - `docs.lua` - *Lua script to auto-generate `doc/my_awesome_plugin.txt` docs file from code annotations*
-  - `minimal_init.vim` - *start Neovim instances with minimal plugin configuration. Used in `Makefile`*
+### 🧪 Tests
 
-- `Makefile` - *script for launching **tests**, **linting**, and docs generation*
+[Busted](https://lunarmodules.github.io/busted/) is a unit testing framework for Lua. Using [nlua](https://github.com/mfussenegger/nlua) as Lua interpreter give you access to Neovim Lua API while running tests. To run tests, simply run `busted` from the root of the plugin.
 
-The other files are not important and will be mentioned in the following sections.
+- ***.busted*** - configuration file for Busted which specifies nlua as the Lua interpreter.
 
-## 🧪 Tests
+### 📚 Documentation
 
-Tests are run using [plenary.nvim](https://github.com/nvim-lua/plenary.nvim), a Lua library for Neovim plugin development. [Here](https://github.com/nvim-lua/plenary.nvim/blob/master/TESTS_README.md) is how to write tests using plenary.
+It's important to document your plugin in the Vim/Neovim way so it's easily accessible from within the editor.
 
-To run the tests on your local machine for local development, you can:
+- ***doc/base.txt*** - documentation file for the plugin formatted as vimdoc.
 
-- Have the plenary plugin in your Neovim configuration and use `:PlenaryBustedDirectory tests`.
-- Have the plenary repo cloned in the same directory as the my_awesome_plugin repo and use `make test`.
+### 📦 CI/CD
 
-When running tests on CI, plenary.nvim is cloned, and the tests are run using `make test`.
+It's no secret that Neovim plugin ecosystem can be brittle. Prove them wrong with:
 
-## 📚 Docs Generation
+- ***.github/workflows/***
+  - ***run-tests.yml*** - workflow to run tests on every push to main branch.
+  - ***run-typecheck.yml*** - workflow to typecheck code on every push.
+  - ***release-github.yml*** - workflow to create a new release on GitHub on every push to main branch.
+  - ***release-luarocks.yml*** - workflow to create a new release on LuaRocks on every release on GitHub.
 
-In the Vim/Neovim world, it's customary to provide documentation in the Vim style, a txt file with tags and sections that can be navigated using the `:help` command.
-In Lua, we can add annotations to our code, i.e., comments starting with `---`, so that we can have the full signature of functions and modules for LSP sorcery. [Here](https://github.com/tjdevries/tree-sitter-lua/blob/master/HOWTO.md) is how to write code annotations.
+Write your commit messages following [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification and let the CI/CD do the rest.
 
-Lua code annotations can be used to generate the Vim style docs using the `docgen` module from [tree-sitter-lua](https://github.com/tjdevries/tree-sitter-lua). This is an alternative tree-sitter parser, so it's not installed by the tree-sitter plugin. To generate the docs locally, you must clone the tree-sitter-lua repo in the same directory as the my_awesome_plugin repo and use `make docs`.
+### 👏 Resources
 
-When running docs generation on CI, tree-sitter-lua is cloned, and the docs are generated using `make docs`.
+Neovim is growing a nice ecosystem, but some parts of plugin development are sometimes obscure. This template is an attempt to put together some best practices. Here are source on which this template is based and that I constantly refer to:
 
-## 🧹 Linting and Formatting
-
-Linting highlights code that is syntactically correct but may not be the best practice and can lead to bugs or errors.
-Formatting is the process of transforming code into a standardized format that makes it easier to read and understand.
-
-- [Luacheck](https://github.com/mpeterv/luacheck) is run by `make lint` using the configuration in the `.luacheckrc` file.
-- In CI, [Stylua](https://github.com/JohnnyMorganz/StyLua) is run after linting using the configuration in the `.stylua.toml` file.
-
-## 🚀 Deployment
-
-[Tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging) are how Git marks milestones in the commit history of a repository.
-Tags can be used to trigger releases, i.e., publish a specific version of the plugin on GitHub and LuaRocks.
-
-- A new release on GitHub is automatically created when a new tag is pushed.
-- A new release on LuaRocks is automatically created when a new tag is pushed. It requires adding `LUAROCKS_API_KEY` as a secret in the repo settings.
-
-## 👏 Acknowledgments
-
-Neovim is growing a nice ecosystem, but some parts of plugin development are sometimes obscure. This template is an attempt to put together best practices by copying:
-
-- [ellisonleao/nvim-plugin-template](https://github.com/ellisonleao/nvim-plugin-template) - *Plugin Structure*
-- [nvim-telescope/telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) - *Tests, lint, docs generation*
-
-I highly suggest [this video tutorial](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries), a walkthrough of the Neovim plugin development process.
+- [nvim-best-practices](https://github.com/nvim-neorocks/nvim-best-practices): Collection of DOs and DON'Ts for modern Neovim Lua plugin development
+- [nvim-lua-plugin-template](https://github.com/nvim-lua/nvim-lua-plugin-template/): Another template for Neovim Lua plugins
+- [LuaCATS annotations](https://luals.github.io/wiki/annotations/): Add type annotations to your Lua code
+- [Plugin development walkthrough](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries): it use plenary instead of busted for testing
