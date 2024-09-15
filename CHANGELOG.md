@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/S1M0N38/base.nvim/compare/v1.0.0...v1.0.1) (2024-09-15)
+
+
+### Bug Fixes
+
+* change user variable to local scope in rockspec ([114f882](https://github.com/S1M0N38/base.nvim/commit/114f88220d55f2f67beb46485cde25cd97a2e4e4))
+* comment out unused environment variables in run-tests.yml ([619ba9e](https://github.com/S1M0N38/base.nvim/commit/619ba9ea63ff3b1e2ec55b834f5f56e8ebb06a6a))
+
 ## [1.0.0](https://github.com/S1M0N38/base.nvim/compare/v0.1.1...v1.0.0) (2024-09-15)
 
 
