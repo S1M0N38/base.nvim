@@ -17,21 +17,21 @@
 
 ______________________________________________________________________
 
-Writing a Neovim plugin has become very easy. Lua Rocks! (pun intended), busted, LuaLS and CI/CD pipelines make the development process a breeze.
+Writing a Neovim plugin has become very easy. Lua rocks! (pun intended), busted, LuaLS, and CI/CD pipelines make the development process a breeze.
 
-1. Choose a name with the extension `.nvim` e.g., `your-plugin.nvim`.
+1. Choose a name with the extension `.nvim`, e.g., `your-plugin.nvim`.
 1. On the top right of this page, click on `Use this template` > `Create a new repository` with that name.
 1. Clone your new repo and `cd` into it.
-1. Rename `base` to `your-plugin` in the whole repo
-1. Rename `S1M0N38` to `your-github-username` in the whole repo
+1. Rename `base` to `your-plugin` in the whole repo.
+1. Rename `S1M0N38` to `your-github-username` in the whole repo.
 
 ### 🛠️ Setup
 
 - **Neovim** (≥ 0.10)
 
-- **[luarocks](https://luarocks.org/)**, **[busted](https://lunarmodules.github.io/busted/)** & **[nlua](https://github.com/mfussenegger/nlua)** (macOS [install.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/install-lua-luarocks-on-macos.sh) and [uninstall.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/uninstall-lua-luarocks-on-macos.sh) scripts)
+- **[luarocks](https://luarocks.org/)**, **[busted](https://lunarmodules.github.io/busted/)**, and **[nlua](https://github.com/mfussenegger/nlua)** (macOS [install.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/install-lua-luarocks-on-macos.sh) and [uninstall.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/uninstall-lua-luarocks-on-macos.sh) scripts)
 
-- **[lazy.nvim](https://github.com/folke/lazy.nvim)** & **[lazydev.nvim](https://github.com/folke/lazydev.nvim)**
+- **[lazy.nvim](https://github.com/folke/lazy.nvim)** and **[lazydev.nvim](https://github.com/folke/lazydev.nvim)**
 
 ```lua
 {
@@ -84,7 +84,7 @@ Writing a Neovim plugin has become very easy. Lua Rocks! (pun intended), busted,
 
 ### 🧪 Tests
 
-[Busted](https://lunarmodules.github.io/busted/) is a unit testing framework for Lua. Using [nlua](https://github.com/mfussenegger/nlua) as Lua interpreter give you access to Neovim Lua API while running tests. To run tests, simply run `busted` from the root of the plugin.
+[Busted](https://lunarmodules.github.io/busted/) is a unit testing framework for Lua. Using [nlua](https://github.com/mfussenegger/nlua) as Lua interpreter gives you access to Neovim Lua API while running tests. To run tests, simply run `busted` from the root of the plugin.
 
 - ***.busted*** - configuration file for Busted which specifies nlua as the Lua interpreter.
 
@@ -96,21 +96,21 @@ It's important to document your plugin in the Vim/Neovim way so it's easily acce
 
 ### 📦 CI/CD
 
-It's no secret that Neovim plugin ecosystem can be brittle. Prove them wrong with:
+It's no secret that the Neovim plugin ecosystem can be brittle. Prove them wrong with:
 
 - ***.github/workflows/***
-  - ***run-tests.yml*** - workflow to run tests on every push to main branch.
+  - ***run-tests.yml*** - workflow to run tests on every push to the main branch.
   - ***run-typecheck.yml*** - workflow to typecheck code on every push.
-  - ***release-github.yml*** - workflow to create a new release on GitHub on every push to main branch.
+  - ***release-github.yml*** - workflow to create a new release on GitHub on every push to the main branch.
   - ***release-luarocks.yml*** - workflow to create a new release on LuaRocks on every release on GitHub.
 
 Write your commit messages following [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification and let the CI/CD do the rest.
 
 ### 👏 Resources
 
-Neovim is growing a nice ecosystem, but some parts of plugin development are sometimes obscure. This template is an attempt to put together some best practices. Here are source on which this template is based and that I constantly refer to:
+Neovim is growing a nice ecosystem, but some parts of plugin development are sometimes obscure. This template is an attempt to put together some best practices. Here are sources on which this template is based and that I constantly refer to:
 
 - [nvim-best-practices](https://github.com/nvim-neorocks/nvim-best-practices): Collection of DOs and DON'Ts for modern Neovim Lua plugin development
 - [nvim-lua-plugin-template](https://github.com/nvim-lua/nvim-lua-plugin-template/): Another template for Neovim Lua plugins
 - [LuaCATS annotations](https://luals.github.io/wiki/annotations/): Add type annotations to your Lua code
-- [Plugin development walkthrough](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries): it use plenary instead of busted for testing
+- [Plugin development walkthrough](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries): it uses plenary instead of busted for testing
