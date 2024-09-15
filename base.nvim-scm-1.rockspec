@@ -4,7 +4,7 @@ local _MODREV, _SPECREV = "scm", "-1"
 rockspec_format = "3.0"
 version = _MODREV .. _SPECREV
 
-user = "S1M0N38"
+local user = "S1M0N38"
 package = "base.nvim"
 
 description = {
@@ -25,4 +25,3 @@ source = {
 build = {
   type = "builtin",
 }
-
