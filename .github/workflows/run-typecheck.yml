@@ -1,0 +1,37 @@
+# lua-typecheck-action by mrcjkb
+#   A GitHub action that lets you leverage sumneko lua-language-server and EmmyLua to statically type check lua code.
+#   https://github.com/mrcjkb/lua-typecheck-action
+
+name: Run typecheck
+
+on:
+  pull_request: ~
+  push:
+    branches:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Type Check Code Base
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Neovim types, maybe there is a better way
+      - name: Checkout dependency neodev
+        uses: actions/checkout@v3
+        with:
+          repository: "folke/neodev.nvim"
+          path: "deps/neodev.nvim"
+
+      - name: Type Check Code Base
+        uses: mrcjkb/lua-typecheck-action@v0
+        with:
+          checklevel: Warning
+          configpath: .github/workflows/.luarc.json
+          directories: |
+            lua
+            spec

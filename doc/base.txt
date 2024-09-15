@@ -1,0 +1,87 @@
+================================================================================
+INTRODUCTION                                                            *base*
+
+base.nvim is a template plugin for Neovim that serves as a starting point for
+creating new plugins. It provides a structured foundation with best practices
+for modern Neovim plugin development.
+
+Table of contents:
+
+1. REQUIREMENTS: Plugin dependencies and setup.            |base-requirements|
+2. INSTALLATION: How to install the plugin.                |base-installation|
+3. CONFIGURATION: Available options and their defaults.          |base-config|
+4. COMMANDS: Commands provided by the plugin.                  |base-commands|
+5. FUNCTIONS: Lua functions exposed by the plugin.            |base-functions|
+
+================================================================================
+REQUIREMENTS                                               *base-requirements*
+
+Before using base.nvim, ensure you have the following:
+
+- Neovim (>= 0.10)
+- luarocks (https://luarocks.org/)
+- busted (https://lunarmodules.github.io/busted/)
+- nlua (https://github.com/mfussenegger/nlua)
+
+For development:
+- lazy.nvim (https://github.com/folke/lazy.nvim)
+- lazydev.nvim (https://github.com/folke/lazydev.nvim)
+
+================================================================================
+INSTALLATION                                               *base-installation*
+
+It's recommended to use a plugin manager like lazy.nvim to install base.nvim:
+
+>lua
+    { "S1M0N38/base.nvim", opts = { } }
+<
+
+================================================================================
+CONFIGURATION                                                    *base-config*
+
+                                                                *base.setup()*
+base.setup({opts}) ~
+
+The `base.setup()` function sets up the plugin with user-provided options.
+Here are the available options:
+
+>lua
+  {
+    name = "John Doe" -- The name of the user (default)
+  }
+<
+
+================================================================================
+COMMANDS                                                       *base-commands*
+
+base.nvim provides the following command:
+
+:Base [subcommand] ~
+  Execute a base.nvim subcommand. Available subcommands:
+  - `hello`: Say hello to the user
+  - `bye`: Say bye to the user
+
+  If no subcommand is provided or an invalid subcommand is used, an error
+  message will be displayed.
+
+================================================================================
+FUNCTIONS                                                     *base-functions*
+
+base.nvim exposes the following Lua functions:
+
+                                                                *base.setup()*
+base.setup({opts}) ~
+  Set up the plugin with the given options. See |base-config| for available
+  options.
+
+                                                                *base.hello()*
+base.hello() ~
+  Say hello to the user. Returns a string with the greeting message.
+
+                                                                  *base.bye()*
+base.bye() ~
+  Say bye to the user. Returns a string with the farewell message.
+
+
+================================================================================
+vim:tw=78:ts=8:et:ft=help:norl:
