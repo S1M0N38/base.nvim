@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run tests
         uses: nvim-neorocks/nvim-busted-action@v1
-        env:
+        # env:
           # If env vars are use in tests, define them here and on GitHub in repo settings
           # EXAMPLE_ENV_VAR: ${{ secrets.EXAMPLE_ENV_VAR }}
         with:
