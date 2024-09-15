@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/S1M0N38/base.nvim/compare/v1.0.1...v1.0.2) (2024-09-15)
+
+
+### Bug Fixes
+
+* **docs:** update badge URLs in README.md ([bf58d17](https://github.com/S1M0N38/base.nvim/commit/bf58d173338f66c9d144092edc16a60ceb753e1c))
+
 ## [1.0.1](https://github.com/S1M0N38/base.nvim/compare/v1.0.0...v1.0.1) (2024-09-15)
 
 
