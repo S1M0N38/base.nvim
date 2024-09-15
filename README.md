@@ -2,7 +2,7 @@
 
 <p align="center">
   <a href="https://github.com/S1M0N38/base.nvim/actions/workflows/run-tests.yml">
-    <img alt="Run Tests badge" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/base.nvim/tests.yml?style=for-the-badge&label=Tests"/>
+    <img alt="Run Tests badge" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/base.nvim/run-tests.yml?style=for-the-badge&label=Tests"/>
   </a>
   <a href="https://luarocks.org/modules/S1M0N38/base.nvim">
     <img alt="LuaRocks badge" src="https://img.shields.io/luarocks/v/S1M0N38/base.nvim?style=for-the-badge&color=5d2fbf"/>
@@ -10,7 +10,7 @@
   <a href="https://github.com/S1M0N38/base.nvim/releases">
     <img alt="GitHub badge" src="https://img.shields.io/github/v/release/S1M0N38/base.nvim?style=for-the-badge&label=GitHub"/>
   </a>
-  <a href="https://www.reddit.com/r/neovim/comments/...">
+  <a href="https://www.reddit.com/r/neovim/comments/195q8ai/template_for_writing_neovim_plugin/">
     <img alt="Reddit badge" src="https://img.shields.io/badge/post-reddit?style=for-the-badge&label=Reddit&color=FF5700"/>
   </a>
 </p>
