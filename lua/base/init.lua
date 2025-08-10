@@ -1,7 +1,8 @@
+---@class Base.Plugin
 local M = {}
 
 ---Setup the base plugin
----@param opts UserOptions: plugin options
+---@param opts Base.UserOptions: plugin options
 M.setup = function(opts)
   require("base.config").setup(opts)
 end
