@@ -8,20 +8,28 @@ local user = "S1M0N38"
 package = "base.nvim"
 
 description = {
-  summary = "A template for Neovim plugin",
-  labels = { "neovim" },
-  homepage = "https://github.com/" .. user .. "/" .. package,
-  license = "MIT",
+	summary = "Modern template for Neovim plugin development",
+	detailed = [[
+base.nvim is a simple template for Neovim plugin development that provides
+best practices, testing setup, type definitions, and automated workflows.
+  ]],
+	labels = { "neovim", "template", "plugin", "lua", "testing", "busted" },
+	homepage = "https://github.com/" .. user .. "/" .. package,
+	license = "MIT",
+}
+
+dependencies = {
+	"lua >= 5.1",
 }
 
 test_dependencies = {
-  "nlua",
+	"nlua",
 }
 
 source = {
-  url = "git://github.com/" .. user .. "/" .. package,
+	url = "git://github.com/" .. user .. "/" .. package,
 }
 
 build = {
-  type = "builtin",
+	type = "builtin",
 }
