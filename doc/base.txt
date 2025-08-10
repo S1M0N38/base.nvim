@@ -1,87 +1,370 @@
 ================================================================================
-INTRODUCTION                                                            *base*
+INTRODUCTION                                                             *base*
 
-base.nvim is a template plugin for Neovim that serves as a starting point for
-creating new plugins. It provides a structured foundation with best practices
-for modern Neovim plugin development.
+base.nvim is a template for Neovim plugin development with testing support,
+type definitions, and automated workflows.
+
+Links:
+- Changelog: https://github.com/S1M0N38/base.nvim/blob/main/CHANGELOG.md
+- License (MIT): https://github.com/S1M0N38/base.nvim/blob/main/LICENSE
 
 Table of contents:
 
-1. REQUIREMENTS: Plugin dependencies and setup.            |base-requirements|
-2. INSTALLATION: How to install the plugin.                |base-installation|
-3. CONFIGURATION: Available options and their defaults.          |base-config|
-4. COMMANDS: Commands provided by the plugin.                  |base-commands|
-5. FUNCTIONS: Lua functions exposed by the plugin.            |base-functions|
+1. FEATURES: What this template provides.                       |base-features|
+2. REQUIREMENTS: Plugin dependencies and setup.             |base-requirements|
+3. INSTALLATION: How to install and use the template.       |base-installation|
+4. CONFIGURATION: Available options and their defaults.           |base-config|
+5. COMMANDS: Commands provided by the template.                 |base-commands|
+6. API: Exposed functions and development interfaces.                |base-api|
+7. DEVELOPMENT: Testing, building, and release workflows.    |base-development|
+8. TROUBLESHOOTING: Common issues and solutions.         |base-troubleshooting|
 
 ================================================================================
-REQUIREMENTS                                               *base-requirements*
+FEATURES                                                        *base-features*
 
-Before using base.nvim, ensure you have the following:
+base.nvim provides a template with the following features:
 
-- Neovim (>= 0.10)
-- luarocks (https://luarocks.org/)
-- busted (https://lunarmodules.github.io/busted/)
-- nlua (https://github.com/mfussenegger/nlua)
+Plugin Structure: ~
 
-For development:
-- lazy.nvim (https://github.com/folke/lazy.nvim)
-- lazydev.nvim (https://github.com/folke/lazydev.nvim)
+  A well-organized plugin structure is essential for maintainability,
+  readability, and following Neovim community conventions. This template
+  provides a proven directory layout that separates concerns and makes your
+  plugin easy to navigate for both users and contributors.
+
+  - Organized file layout with lua/base/init.lua for core logic
+  - plugin/base.lua for plugin manager integration
+  - lua/base/health.lua for health check functionality
+  - lua/base/types.lua for LuaCATS type definitions
+  - Standard directory structure following Neovim conventions
+
+Development Environment: ~
+
+  Modern plugin development requires sophisticated tooling to catch errors
+  early, provide intelligent code completion, and maintain code quality. The
+  integrated development environment setup ensures you have the same level of
+  support that users expect from professional development tools.
+
+  - Lua Language Server integration with autocompletion and diagnostics
+  - LuaCATS annotations support for type checking and documentation
+  - lazydev.nvim integration for enhanced plugin development experience
+  - lazy.nvim configuration examples for local development workflow
+
+Testing Framework: ~
+
+  Reliable plugins require comprehensive testing to prevent regressions and
+  ensure consistent behavior across different Neovim versions and
+  configurations. The testing framework provides the foundation for building
+  confidence in your plugin's stability and correctness.
+
+  - Busted unit testing framework with comprehensive test structure
+  - nlua integration for Neovim Lua API access during tests
+  - Test specifications in spec/ directory with automated discovery
+
+Documentation System: ~
+
+  Quality documentation is crucial for plugin adoption and user experience.
+  Integrating with Neovim's built-in help system ensures users can access
+  documentation offline and in a familiar format, following established
+  conventions that Neovim users expect.
+
+  - Vim help documentation using vimdoc format in doc/ directory
+  - Integration with Neovim's built-in help system
+  - Documentation accessible via :help commands within editor
+
+Automation and Workflows: ~
+
+  Automated workflows reduce manual overhead, prevent human errors, and ensure
+  consistent quality across releases. Continuous integration catches issues
+  before they reach users, while automated publishing streamlines the release
+  process and maintains professional standards.
+
+  - GitHub Actions workflows for continuous integration
+  - Type checking with Lua Language Server validation
+  - Automated releases based on conventional commit specifications
+  - LuaRocks and GitHub package publishing with semantic versioning
+  - Minimal reproduction environment for debugging with repro/repro.lua
 
 ================================================================================
-INSTALLATION                                               *base-installation*
+REQUIREMENTS                                                *base-requirements*
 
-It's recommended to use a plugin manager like lazy.nvim to install base.nvim:
+Before using base.nvim as a template, ensure you have the following:
 
->lua
-    { "S1M0N38/base.nvim", opts = { } }
-<
+- Neovim ≥ 0.11
+- luarocks (https://luarocks.org/) for package management
+- busted (https://lunarmodules.github.io/busted/) for testing
+- nlua (https://github.com/mfussenegger/nlua) for Neovim API access in tests
+
+For development workflow:
+- lazy.nvim (https://github.com/folke/lazy.nvim) for plugin management
+- lazydev.nvim (https://github.com/folke/lazydev.nvim) for Lua LSP setup
+
+Optional for automatic plugin initialization:
+- Claude Code (https://github.com/S1M0N38/Claude-Code) for automatic plugin
+  initialization
 
 ================================================================================
-CONFIGURATION                                                    *base-config*
+INSTALLATION                                                *base-installation*
 
-                                                                *base.setup()*
-base.setup({opts}) ~
+base.nvim is primarily designed as a template for creating new plugins.
 
-The `base.setup()` function sets up the plugin with user-provided options.
-Here are the available options:
+Using as a template: ~
+
+1. Click "Use this template" on GitHub to create a new repository
+2. Clone your new repository and customize for your plugin:
+   - Replace "base" with your plugin name throughout the codebase
+   - Replace "S1M0N38" with your GitHub username
+   - Update plugin description and functionality
+
+You can also automatically initialize the template using Claude Code buy
+running the custom command `/init-from-template`. Read the file
+`.claude/commands/init-from-template.md` for more information.
+
+Development installation: ~
+
+For development and testing, install using lazy.nvim:
 
 >lua
   {
-    name = "John Doe" -- The name of the user (default)
+    {
+      "your-plugin.nvim",
+      dir = "/path/to/your-plugin.nvim",
+      branch = "main",
+      lazy = false,
+      opts = {},
+      keys = {
+        {
+          "<leader>rb",
+          "<cmd>Lazy reload your-plugin.nvim<cr>",
+          desc = "Reload your-plugin.nvim",
+          mode = { "n", "v" },
+        },
+      },
+    },
+
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+        library = {
+          "${3rd}/luassert/library",
+          "${3rd}/busted/library",
+          "base.nvim",
+        }
+      },
+    },
+
   }
 <
 
 ================================================================================
-COMMANDS                                                       *base-commands*
+CONFIGURATION                                                     *base-config*
 
-base.nvim provides the following command:
+base.setup({opts}) ~
+
+The `base.setup()` function configures the plugin with user-provided options.
+Available options:
+
+>lua
+  {
+    name = "John Doe", -- The name of the user (string, default: "John Doe")
+  }
+<
+
+The configuration system demonstrates proper option handling with defaults
+and user customization. When building your plugin, extend this pattern to
+support your specific configuration needs.
+
+Example configuration: ~
+>lua
+  require("base").setup({
+    name = "Jane Developer",
+  })
+<
+
+================================================================================
+COMMANDS                                                        *base-commands*
+
+base.nvim provides the following commands for demonstration and testing:
 
 :Base [subcommand] ~
   Execute a base.nvim subcommand. Available subcommands:
-  - `hello`: Say hello to the user
-  - `bye`: Say bye to the user
+  - `hello`: Display greeting message to the user
+  - `bye`: Display farewell message to the user
 
   If no subcommand is provided or an invalid subcommand is used, an error
-  message will be displayed.
+  message will be displayed with usage information.
+
+:checkhealth base ~
+  Run health checks to verify base.nvim setup and configuration.
+  This command validates:
+  - Plugin installation and loading
+  - Configuration option validation
+  - Core functionality testing
+  - Development dependencies availability
 
 ================================================================================
-FUNCTIONS                                                     *base-functions*
+API                                                                  *base-api*
 
-base.nvim exposes the following Lua functions:
+base.nvim exposes a minimal API focused on setup and core functionality:
 
-                                                                *base.setup()*
+                                                                 *base.setup()*
 base.setup({opts}) ~
-  Set up the plugin with the given options. See |base-config| for available
-  options.
+  Set up the plugin with the given options. See |base-config| for
+  available options. This is the primary public function exposed by the
+  main module.
 
-                                                                *base.hello()*
+                                                                 *base.hello()*
 base.hello() ~
-  Say hello to the user. Returns a string with the greeting message.
+  Say hello to the user using the configured name. Returns a string with
+  the greeting message and prints it using vim.print().
 
-                                                                  *base.bye()*
+  Return format: ~
+  "Hello [configured name]"
+
+                                                                   *base.bye()*
 base.bye() ~
-  Say bye to the user. Returns a string with the farewell message.
+  Say bye to the user using the configured name. Returns a string with
+  the farewell message and prints it using vim.print().
 
+  Return format: ~
+  "Bye [configured name]"
+
+Usage example: ~
+>lua
+    -- Basic usage
+    require("base").setup({ name = "Developer" })
+
+    -- Call functions directly
+    local greeting = require("base").hello()
+    local farewell = require("base").bye()
+
+    -- Access configuration
+    local config = require("base.config").options
+    print("Current name: " .. config.name)
+<
+
+================================================================================
+DEVELOPMENT                                                  *base-development*
+
+base.nvim includes a development workflow for plugin creation:
+
+Testing: ~
+
+Run tests using Busted:
+>bash
+  # Run all tests
+  busted
+
+  # Run specific test file
+  busted spec/base_spec.lua
+
+  # Run with verbose output
+  busted --verbose
+<
+
+Health Checks: ~
+
+Validate plugin setup and functionality:
+>vim
+  :checkhealth base
+<
+
+Minimal Reproduction: ~
+
+Debug issues using the included reproduction environment:
+>bash
+  # Start Neovim with minimal config
+  nvim -u repro/repro.lua
+<
+
+Code Formatting: ~
+
+The template uses EditorConfig for consistent code formatting across editors:
+>bash
+  # Stylua automatically reads formatting rules from .editorconfig
+  stylua .
+
+  # The .editorconfig file configures:
+  # - 2-space indentation
+  # - Double quotes for strings
+  # - 120 character line length
+  # - Unix line endings (LF)
+<
+
+No separate `stylua.toml` configuration file is needed as stylua respects
+EditorConfig settings. This approach ensures formatting consistency across
+different editors and tools while maintaining a minimal configuration setup.
+
+Release Automation: ~
+
+The template includes automated workflows for:
+- Running tests on every push (GitHub Actions)
+- Type checking with LuaLS
+- Automated releases based on conventional commits
+- LuaRocks package publishing
+
+Use conventional commit format for automatic versioning:
+- `feat:` for new features (minor version bump)
+- `fix:` for bug fixes (patch version bump)
+- `BREAKING CHANGE:` for breaking changes (major version bump)
+
+A more details explenation for conventional commits can be found as definition
+for the claude code command `/commits` at `.claude/commands/commits.md`.
+
+================================================================================
+TROUBLESHOOTING                                          *base-troubleshooting*
+
+First, run the health check to identify issues:
+>vim
+  :checkhealth base
+<
+
+If you encounter problems, follow these steps to reproduce the issue
+in a clean environment:
+
+1. Clone base.nvim and cd into the directory
+2. Run `nvim -u repro/repro.lua`
+3. Run `:checkhealth base`
+4. Try to reproduce the issue
+5. Report the repro.lua and any error messages
+
+If you need to programmatically run lua code for testing, you can use the
+repro/repro.lua file for configuration and use the `-l` flag to load the
+script file, i.e.:
+
+>bash
+  nvim -u repro/repro.lua -l <script.lua>
+<
+
+or directly run the command with the `-c` flag:
+>bash
+  # Run the command after loading the config in repro/repro.lua file
+  nvim -u repro/repro.lua -c "Base hello"
+
+  # Run in headless mode and quit after running the command
+  nvim --headless -u repro/repro.lua -c "Base hello" -c "q"
+<
+
+
+Manual Testing: ~
+
+Test basic functionality:
+>vim
+  :Base hello
+  :Base bye
+<
+
+Test Lua API:
+>vim
+  :lua print(require("base").hello())
+  :lua print(require("base").bye())
+<
+
+Test configuration:
+>vim
+  :lua require("base").setup({name = "Test User"})
+  :lua print(require("base.config").options.name)
+<
 
 ================================================================================
 vim:tw=78:ts=8:et:ft=help:norl:
