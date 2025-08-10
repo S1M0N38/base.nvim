@@ -9,7 +9,7 @@ describe("Health Check", function()
     end)
 
     it("runs health check without errors", function()
-      assert.has_no.errors(function()
+      assert.has_no_errors(function()
         health.check()
       end)
     end)
@@ -19,7 +19,7 @@ describe("Health Check", function()
       base.setup({})
 
       -- Health check should pass without errors
-      assert.has_no.errors(function()
+      assert.has_no_errors(function()
         health.check()
       end)
     end)
@@ -32,14 +32,14 @@ describe("Health Check", function()
     end)
 
     it("runs health check with custom options", function()
-      assert.has_no.errors(function()
+      assert.has_no_errors(function()
         health.check()
       end)
     end)
 
     it("validates custom options correctly", function()
       -- Health check should validate the custom name option
-      assert.has_no.errors(function()
+      assert.has_no_errors(function()
         health.check()
       end)
     end)
@@ -52,7 +52,7 @@ describe("Health Check", function()
       base.setup({ name = 123 }) -- name should be string, not number
 
       -- Health check should still complete (but may report errors internally)
-      assert.has_no.errors(function()
+      assert.has_no_errors(function()
         health.check()
       end)
     end)
