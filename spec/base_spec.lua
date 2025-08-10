@@ -1,5 +1,6 @@
 local base = require("base")
 
+-- If you need to setup other plugins for integration testing, implment a setup that looks like the repro/repro.lua
 
 -- Test base.nvim with default options
 describe("Default options", function()
@@ -22,7 +23,6 @@ describe("User defined options", function()
     assert.are.equal("Bye John Smith", base.bye())
   end)
 end)
-
 
 -- RESOURCES:
 --   - https://github.com/lunarmodules/busted
