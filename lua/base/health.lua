@@ -1,3 +1,4 @@
+---@class Base.Health
 local M = {}
 
 
@@ -22,6 +23,7 @@ end
 
 ---This function is used to check the health of the plugin
 ---It's called by `:checkhealth` command
+---@return nil
 M.check = function()
   vim.health.start("base.nvim health check")
 

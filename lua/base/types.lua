@@ -4,23 +4,28 @@
 
 -- lua/base/init.lua -----------------------------------------------------------
 
----@class Base
----@field setup function: setup the plugin
----@field hello function: Say hello to the user
----@field bye function: Say bye to the user
+---@class Base.Plugin
+---@field setup function setup the plugin with user options
+---@field hello function Say hello to the user using configured name
+---@field bye function Say goodbye to the user using configured name
 
 -- lua/base/config.lua ---------------------------------------------------------
 
----@class Config
----@field defaults Options: default options
----@field options Options: user options
----@field setup function: setup the plugin
+---@class Base.Config
+---@field defaults Base.DefaultOptions default plugin options
+---@field options Base.Options merged user and default options
+---@field setup function setup the plugin configuration
 
----@class UserOptions
----@field name? string: The name of the user
+---@class Base.UserOptions
+---@field name? string The name of the user to greet (optional)
 
----@class DefaultOptions
----@field name string: The name of the user
+---@class Base.DefaultOptions
+---@field name string The default name of the user to greet
 
----@class Options
----@field name string: The name of the user
+---@class Base.Options
+---@field name string The name of the user to greet (merged from user/default options)
+
+-- lua/base/health.lua ---------------------------------------------------------
+
+---@class Base.Health
+---@field check fun(): nil perform health check for the plugin

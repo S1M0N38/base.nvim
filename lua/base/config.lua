@@ -1,14 +1,14 @@
----@class Config
+---@class Base.Config
 local M = {}
 
----@class DefaultOptions
+---@class Base.DefaultOptions
 M.defaults = { name = "John Doe" }
 
----@class Options
+---@class Base.Options
 M.options = {}
 
 ---Extend the defaults options table with the user options
----@param opts UserOptions: plugin options
+---@param opts Base.UserOptions: plugin options
 M.setup = function(opts)
   M.options = vim.tbl_deep_extend("force", {}, M.defaults, opts or {})
 end
