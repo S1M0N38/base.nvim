@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(busted:*)",
+      "Bash(nvim:*)"
+    ],
+    "deny": [
+      "Edit(CHANGELOG.md)",
+      "MultiEdit(CHANGELOG.md)",
+      "Write(CHANGELOG.md)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "stylua ."
+          },
+        ]
+      }
+    ]
+  }
+}
