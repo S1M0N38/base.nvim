@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/S1M0N38/base.nvim/compare/v1.0.2...v2.0.0) (2025-08-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* update README to be a README template itself
+
+### Features
+
+* add .github/FUNDING.yml for ko-fi ([04001dd](https://github.com/S1M0N38/base.nvim/commit/04001dd552069187f5c0e97bc609bd0a31c8102b))
+* add claude code custom commands ([aaec6e6](https://github.com/S1M0N38/base.nvim/commit/aaec6e658c2460774dd6da9d7e37ddb61811a5d5))
+* add claude code settings ([cd4a6d7](https://github.com/S1M0N38/base.nvim/commit/cd4a6d7f1dbf3213af240254fb315e5df15c8524))
+* update metadata for luarocks package ([0815e1f](https://github.com/S1M0N38/base.nvim/commit/0815e1f1c15f2de72bb1d4004a3f1d490357b48d))
+* update README to be a README template itself ([f543534](https://github.com/S1M0N38/base.nvim/commit/f54353483145d7ad71b1fef8daf9b79655218f87))
+* update repro.lua config ([16ca932](https://github.com/S1M0N38/base.nvim/commit/16ca93259372d004152f6b3ff5c7580c50aaee3f))
+* update types ([58ce2a1](https://github.com/S1M0N38/base.nvim/commit/58ce2a1b9bf4b2e373fb7e49c8dc25a014325906))
+
 ## [1.0.2](https://github.com/S1M0N38/base.nvim/compare/v1.0.1...v1.0.2) (2024-09-15)
 
 
