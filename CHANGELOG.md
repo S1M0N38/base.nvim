@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/S1M0N38/base.nvim/compare/v2.0.0...v2.0.1) (2026-02-09)
+
+
+### Bug Fixes
+
+* **claude:** claude settings ([bd226d8](https://github.com/S1M0N38/base.nvim/commit/bd226d8766b8d7b4f5ac0d38f269a7e1d9b47cbc))
+
 ## [2.0.0](https://github.com/S1M0N38/base.nvim/compare/v1.0.2...v2.0.0) (2025-08-11)
 
 
