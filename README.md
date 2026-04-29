@@ -28,11 +28,7 @@ ______________________________________________________________________
 ## ⚡️ Requirements
 
 - **[Neovim](https://github.com/neovim/neovim)** ≥ 0.12.2
-- **[luarocks](https://luarocks.org/)**: install Lua packages
-- **[lazy.nvim](https://github.com/folke/lazy.nvim)**: plugin manager for Neovim
-- **[lazydev.nvim](https://github.com/folke/lazydev.nvim)** (optional): enhanced plugin dev experience
-
-> Here are my personal scripts to install Lua dev packages on macOS: [install.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/install-lua-luarocks-on-macos.sh) and [uninstall.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/uninstall-lua-luarocks-on-macos.sh). Use at your own risk!
+- **[StyLua](https://github.com/JohnnyMorganz/StyLua)** 0.20+: code formatting and linting
 
 ## 📦 Installation
 
