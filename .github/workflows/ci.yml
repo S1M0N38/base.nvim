@@ -1,0 +1,39 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: JohnnyMorganz/stylua-action@v4
+        with:
+          version: "0.20.0"
+          args: --check lua/ tests/
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mrcjkb/lua-typecheck-action@v2
+        with:
+          directories: lua/
+          level: Warning
+
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        nvim_version: ["stable", "nightly"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.nvim_version }}
+      - name: Run tests
+        run: nvim -l tests/minit.lua --minitest
