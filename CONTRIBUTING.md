@@ -12,13 +12,11 @@ Thank you for your interest in contributing to base.nvim! This template aims to 
 
 ### Prerequisites
 
-| Tool | Version | Install |
-|------|---------|---------|
-| [Neovim](https://github.com/neovim/neovim) | ≥ 0.12.2 | [releases](https://github.com/neovim/neovim/releases) |
-| [git](https://git-scm.com/) | any | system package manager |
-| [StyLua](https://github.com/JohnnyMorganz/StyLua) | 0.20+ | `luarocks install stylua` or [releases](https://github.com/JohnnyMorganz/StyLua/releases) |
-| [lua-language-server](https://github.com/LuaLS/lua-language-server) | latest | `luarocks install lua-language-server` or [releases](https://github.com/LuaLS/lua-language-server/releases) |
-| [GNU Make](https://www.gnu.org/software/make/) | any | system package manager |
+| Tool | Version | Required for | Install |
+|------|---------|--------------|---------|
+| [Neovim](https://github.com/neovim/neovim) | ≥ 0.12.2 | tests, dev | [releases](https://github.com/neovim/neovim/releases) |
+| [StyLua](https://github.com/JohnnyMorganz/StyLua) | 0.20+ | lint, format | [releases](https://github.com/JohnnyMorganz/StyLua/releases) |
+| [lua-language-server](https://github.com/LuaLS/lua-language-server) | latest | type annotations in editor | [releases](https://github.com/LuaLS/lua-language-server/releases) |
 
 ### Clone and verify
 
