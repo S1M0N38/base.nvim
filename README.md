@@ -2,8 +2,8 @@
   <h1>⛶&nbsp;&nbsp;base.nvim&nbsp;&nbsp;⛶ </h1>
 
   <p align="center">
-    <a href="https://github.com/S1M0N38/base.nvim/actions/workflows/run-tests.yml">
-      <img alt="Run Tests badge" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/base.nvim/run-tests.yml?style=for-the-badge&label=Tests"/>
+    <a href="https://github.com/S1M0N38/base.nvim/actions/workflows/ci.yml">
+      <img alt="CI badge" src="https://img.shields.io/github/actions/workflow/status/S1M0N38/base.nvim/ci.yml?style=for-the-badge&label=CI"/>
     </a>
     <a href="https://luarocks.org/modules/S1M0N38/base.nvim">
       <img alt="LuaRocks badge" src="https://img.shields.io/luarocks/v/S1M0N38/base.nvim?style=for-the-badge&color=5d2fbf"/>
@@ -27,13 +27,10 @@ ______________________________________________________________________
 
 ## ⚡️ Requirements
 
-- **[Neovim](https://github.com/neovim/neovim)** ≥ 0.11
+- **[Neovim](https://github.com/neovim/neovim)** ≥ 0.12.2
 - **[luarocks](https://luarocks.org/)**: install Lua packages
-- **[busted](https://lunarmodules.github.io/busted/)**: unit testing framework for Lua
-- **[nlua](https://github.com/mfussenegger/nlua)**: Neovim as Lua interpreter
 - **[lazy.nvim](https://github.com/folke/lazy.nvim)**: plugin manager for Neovim
-- **[lazydev.nvim](https://github.com/folke/lazydev.nvim)** (optional): enhanced plugin dev experience.
-- **[Claude Code](https://github.com/S1M0N38/Claude-Code)** (optional): for automatic plugin initialization
+- **[lazydev.nvim](https://github.com/folke/lazydev.nvim)** (optional): enhanced plugin dev experience
 
 > Here are my personal scripts to install Lua dev packages on macOS: [install.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/install-lua-luarocks-on-macos.sh) and [uninstall.sh](https://gist.githubusercontent.com/S1M0N38/44c573db63864bcd1dc0bfc73359fec9/raw/d92e3b3e5f3da1c8557e93250e6e8a7de0f7d09a/uninstall-lua-luarocks-on-macos.sh). Use at your own risk!
 
@@ -43,8 +40,7 @@ ______________________________________________________________________
 2. Click **"Use this template"** → **"Create a new repository"** at the top of this page.
 3. Choose a name with the `.nvim` extension (e.g., `your-plugin.nvim`).
 4. Clone your new repository and `cd` into it.
-5. Manually follow the initialization steps in [`init-from-template.md`](/.claude/commands/init-from-template.md) or run `claude init-from-template`.
-6. Install `your-plugin.nvim` using your preferred plugin manager and configure Neovim for plugin development:
+5. Install `your-plugin.nvim` using your preferred plugin manager and configure Neovim for plugin development:
 
 ```lua
 -- Install and configure your plugin during development
@@ -70,8 +66,6 @@ ______________________________________________________________________
   ft = "lua",
   opts = {
     library = {
-      "${3rd}/luassert/library",
-      "${3rd}/busted/library",
       "your-plugin.nvim",
     }
   },
@@ -90,4 +84,4 @@ Get started by reading the comprehensive documentation with [`:help base`](https
 - [nvim-best-practices](https://github.com/nvim-neorocks/nvim-best-practices): Collection of DOs and DON'Ts for modern Neovim Lua plugin development
 - [nvim-lua-plugin-template](https://github.com/nvim-lua/nvim-lua-plugin-template/): another template for Neovim Lua plugins
 - [LuaCATS annotations](https://luals.github.io/wiki/annotations/): type annotations to your Lua code
-- [Plugin development walkthrough](https://youtu.be/n4Lp4cV8YR0?si=lHlxQBNvbTcXPhVY) by [TJ DeVries](https://github.com/tjdevries): it uses plenary instead of busted for testing
+- [mini.test](https://github.com/echasnovski/mini.test): minimal test framework with child-process isolation

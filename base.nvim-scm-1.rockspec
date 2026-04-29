@@ -13,17 +13,13 @@ description = {
 base.nvim is a simple template for Neovim plugin development that provides
 best practices, testing setup, type definitions, and automated workflows.
   ]],
-	labels = { "neovim", "template", "plugin", "lua", "testing", "busted" },
+	labels = { "neovim", "template", "plugin", "lua", "testing", "mini-test" },
 	homepage = "https://github.com/" .. user .. "/" .. package,
 	license = "MIT",
 }
 
 dependencies = {
 	"lua >= 5.1",
-}
-
-test_dependencies = {
-	"nlua",
 }
 
 source = {

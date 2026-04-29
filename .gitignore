@@ -2,3 +2,5 @@ repro/.repro
 .repro
 doc/tags
 .DS_Store
+PLAN.md
+.tests/
