@@ -14,7 +14,7 @@ load(vim.fn.system("curl -s https://raw.githubusercontent.com/folke/lazy.nvim/ma
 local plugins = {
   {
     "S1M0N38/base.nvim",
-    dir = "/Users/simo/Developer/base.nvim", -- Full path to your plugin
+    dir = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":p:h:h"),
     lazy = false,
     opts = {},
   },

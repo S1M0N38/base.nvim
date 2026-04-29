@@ -56,9 +56,9 @@ Testing Framework: ~
   configurations. The testing framework provides the foundation for building
   confidence in your plugin's stability and correctness.
 
-  - Busted unit testing framework with comprehensive test structure
-  - nlua integration for Neovim Lua API access during tests
-  - Test specifications in spec/ directory with automated discovery
+  - mini.test framework with child-process isolation
+  - Test files in tests/ directory with automated discovery
+  - Headless Neovim test runner (tests/runner.lua)
 
 Documentation System: ~
 
@@ -89,18 +89,14 @@ REQUIREMENTS                                                *base-requirements*
 
 Before using base.nvim as a template, ensure you have the following:
 
-- Neovim ≥ 0.11
+- Neovim ≥ 0.12.2
 - luarocks (https://luarocks.org/) for package management
-- busted (https://lunarmodules.github.io/busted/) for testing
-- nlua (https://github.com/mfussenegger/nlua) for Neovim API access in tests
+- mini.test (https://github.com/echasnovski/mini.test) for testing
 
 For development workflow:
 - lazy.nvim (https://github.com/folke/lazy.nvim) for plugin management
 - lazydev.nvim (https://github.com/folke/lazydev.nvim) for Lua LSP setup
-
-Optional for automatic plugin initialization:
-- Claude Code (https://github.com/S1M0N38/Claude-Code) for automatic plugin
-  initialization
+- StyLua (https://github.com/JohnnyMorganz/StyLua) for code formatting
 
 ================================================================================
 INSTALLATION                                                *base-installation*
@@ -114,11 +110,6 @@ Using as a template: ~
    - Replace "base" with your plugin name throughout the codebase
    - Replace "S1M0N38" with your GitHub username
    - Update plugin description and functionality
-
-You can also automatically initialize the template using Claude Code buy
-running the custom command `/init-from-template`. Read the file
-`.claude/commands/init-from-template.md` for more information.
-
 Development installation: ~
 
 For development and testing, install using lazy.nvim:
@@ -146,8 +137,6 @@ For development and testing, install using lazy.nvim:
       ft = "lua",
       opts = {
         library = {
-          "${3rd}/luassert/library",
-          "${3rd}/busted/library",
           "base.nvim",
         }
       },
@@ -250,16 +239,16 @@ base.nvim includes a development workflow for plugin creation:
 
 Testing: ~
 
-Run tests using Busted:
+Run tests using mini.test:
 >bash
   # Run all tests
-  busted
+  make test
 
-  # Run specific test file
-  busted spec/base_spec.lua
+  # Run a single test file
+  make test-one MODULE=base
 
-  # Run with verbose output
-  busted --verbose
+  # Run explicit file
+  nvim --headless -l tests/runner.lua -- tests/test_base.lua
 <
 
 Health Checks: ~
@@ -279,21 +268,18 @@ Debug issues using the included reproduction environment:
 
 Code Formatting: ~
 
-The template uses EditorConfig for consistent code formatting across editors:
+The template uses StyLua for consistent Lua code formatting:
 >bash
-  # Stylua automatically reads formatting rules from .editorconfig
-  stylua .
+  # Check formatting
+  make lint
 
-  # The .editorconfig file configures:
-  # - 2-space indentation
-  # - Double quotes for strings
-  # - 120 character line length
-  # - Unix line endings (LF)
+  # Auto-format all Lua files
+  make format
 <
 
-No separate `stylua.toml` configuration file is needed as stylua respects
-EditorConfig settings. This approach ensures formatting consistency across
-different editors and tools while maintaining a minimal configuration setup.
+Formatting settings are defined in `stylua.toml` (2-space indentation,
+double quotes, 120 column width, Unix line endings). An `.editorconfig` file
+is also provided for consistency across other editors and tools.
 
 Release Automation: ~
 
@@ -308,8 +294,8 @@ Use conventional commit format for automatic versioning:
 - `fix:` for bug fixes (patch version bump)
 - `BREAKING CHANGE:` for breaking changes (major version bump)
 
-A more details explenation for conventional commits can be found as definition
-for the claude code command `/commits` at `.claude/commands/commits.md`.
+A more detailed explanation for conventional commits can be found at
+https://www.conventionalcommits.org/.
 
 ================================================================================
 TROUBLESHOOTING                                          *base-troubleshooting*
