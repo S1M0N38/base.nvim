@@ -19,7 +19,7 @@ setmetatable(M, {
 })
 
 ---Extend the defaults options table with the user options
----@param opts? Base.UserOptions: plugin options
+---@param opts? Base.UserOptions plugin options
 function M.setup(opts)
   config = vim.tbl_deep_extend("force", {}, vim.deepcopy(defaults), opts or {})
 

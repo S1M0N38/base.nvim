@@ -39,5 +39,5 @@ vim.api.nvim_create_user_command("Base", main_cmd, {
 })
 
 -- RESOURCES:
---  - :help lua-guide-commands-create
---  - https://github.com/nvim-neorocks/nvim-best-practices?tab=readme-ov-file#speaking_head-user-commands
+--  - :help nvim_create_user_command()
+--  - https://github.com/lumen-oss/nvim-best-practices?tab=readme-ov-file#speaking_head-user-commands

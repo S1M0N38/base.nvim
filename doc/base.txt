@@ -205,7 +205,7 @@ base.setup({opts}) ~
                                                                  *base.hello()*
 base.hello() ~
   Say hello to the user using the configured name. Returns a string with
-  the greeting message and prints it using vim.print().
+  the greeting message and notifies it via `vim.notify()`.
 
   Return format: ~
   "Hello [configured name]"
@@ -213,7 +213,7 @@ base.hello() ~
                                                                    *base.bye()*
 base.bye() ~
   Say bye to the user using the configured name. Returns a string with
-  the farewell message and prints it using vim.print().
+  the farewell message and notifies it via `vim.notify()`.
 
   Return format: ~
   "Bye [configured name]"
@@ -228,8 +228,8 @@ Usage example: ~
     local farewell = require("base").bye()
 
     -- Access configuration
-    local config = require("base.config").options
-    print("Current name: " .. config.name)
+    local Config = require("base.config")
+    print("Current name: " .. Config.name)
 <
 
 ================================================================================
@@ -349,7 +349,7 @@ Test Lua API:
 Test configuration:
 >vim
   :lua require("base").setup({name = "Test User"})
-  :lua print(require("base.config").options.name)
+  :lua print(require("base.config").name)
 <
 
 ================================================================================
