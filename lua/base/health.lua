@@ -3,7 +3,7 @@ local M = {}
 
 ---Validate the options table obtained from merging defaults and user options
 local function validate_opts_table()
-  local opts = require("base.config").options
+  local opts = require("base.config")
 
   local ok, err = pcall(function()
     vim.validate({
@@ -22,8 +22,15 @@ end
 ---This function is used to check the health of the plugin
 ---It's called by `:checkhealth` command
 ---@return nil
-M.check = function()
+function M.check()
   vim.health.start("base.nvim health check")
+
+  -- Check setup was called
+  if require("base").did_setup then
+    vim.health.ok("setup() was called")
+  else
+    vim.health.error("setup() was not called. Call require('base').setup({}) in your config.")
+  end
 
   validate_opts_table()
 
