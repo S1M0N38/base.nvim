@@ -4,7 +4,7 @@ local M = {}
 M.did_setup = false
 
 ---Setup the base plugin
----@param opts? Base.UserOptions: plugin options
+---@param opts? Base.UserOptions plugin options
 function M.setup(opts)
   if M.did_setup then
     local Util = require("base.util")
@@ -15,7 +15,7 @@ function M.setup(opts)
 end
 
 ---Say hello to the user
----@return string: message to the user
+---@return string msg greeting message
 function M.hello()
   local Config = require("base.config")
   local str = "Hello " .. Config.name
@@ -25,7 +25,7 @@ function M.hello()
 end
 
 ---Say bye to the user
----@return string: message to the user
+---@return string msg farewell message
 function M.bye()
   local Config = require("base.config")
   local str = "Bye " .. Config.name

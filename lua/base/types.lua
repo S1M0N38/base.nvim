@@ -1,6 +1,6 @@
----@meta
---- This is a simple "definition file" (https://luals.github.io/wiki/definition-files/),
---- the @meta tag at the top is its hallmark.
+---@meta _
+--- Definition file for LuaLS type information. Not loaded at runtime.
+--- See: https://luals.github.io/wiki/definition-files/
 
 -- lua/base/init.lua -----------------------------------------------------------
 

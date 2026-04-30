@@ -1,7 +1,7 @@
 ---@class Base.Health
 local M = {}
 
----Validate the options table obtained from merging defaults and user options
+---Validate that config values have expected types
 local function validate_opts_table()
   local opts = require("base.config")
 
@@ -19,13 +19,10 @@ local function validate_opts_table()
   end
 end
 
----This function is used to check the health of the plugin
----It's called by `:checkhealth` command
----@return nil
+---Health check called by `:checkhealth base`
 function M.check()
-  vim.health.start("base.nvim health check")
+  vim.health.start("base.nvim")
 
-  -- Check setup was called
   if require("base").did_setup then
     vim.health.ok("setup() was called")
   else
@@ -33,13 +30,6 @@ function M.check()
   end
 
   validate_opts_table()
-
-  -- Add more checks:
-  --  - check for requirements
-  --  - check for Neovim options (e.g. python support)
-  --  - check for other plugins required
-  --  - check for LSP setup
-  --  ...
 end
 
 return M
