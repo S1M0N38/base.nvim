@@ -22,13 +22,30 @@ ______________________________________________________________________
 
 ## 💡 Motivation
 
-<!-- TODO: write moitivation -->
+A minimal Neovim plugin is just a `lua/` directory and a `plugin/` autocommand. But a maintainable one needs tests, docs, types, CI, and a release workflow. base.nvim fills that gap — no framework, no abstraction, just the smallest possible set of opinionated defaults that work.
+
+Starting a plugin shouldn't mean reinventing project structure and CI pipelines from scratch. base.nvim bundles the conventions used in production plugins so you can focus on writing plugin logic from day one:
+
+- Proper directory layout following [nvim-best-practices](https://github.com/nvim-neorocks/nvim-best-practices)
+- LuaCATS type annotations with LuaLS checking
+- mini.test + luassert test suite
+- StyLua formatting and linting
+- CI with lint, typecheck, and test (stable + nightly)
+- Automated releases via release-please with GitHub and LuaRocks publishing
+- Health checks and vimdoc documentation
+- Agent Skills for AI-assisted development
 
 
 ## ⚡️ Requirements
 
 - **[Neovim](https://github.com/neovim/neovim)** ≥ 0.12.2
-- **[StyLua](https://github.com/JohnnyMorganz/StyLua)** 0.20+: code formatting and linting
+- **[StyLua](https://github.com/JohnnyMorganz/StyLua)**: code formatting and linting
+- **[LuaLS](https://github.com/LuaLS/lua-language-server)**: type checking via LuaCATS annotations
+- **[git](https://git-scm.com/)**: version control and lazy.nvim bootstrap
+- **[Make](https://www.gnu.org/software/make/)**: task runner for build and test commands
+
+Optional:
+- **[lazydev.nvim](https://github.com/folke/lazydev.nvim)**: Lua LSP configuration for plugin development
 
 ## 📦 Installation
 
@@ -67,6 +84,18 @@ ______________________________________________________________________
   },
 }
 ```
+
+## 🤖 AI Coding Agent
+
+This template ships with [Agent Skills](https://agentskills.io/) in `.agents/skills/`, providing specialized instructions for AI coding agents. Skills follow the [Agent Skills specification](https://agentskills.io/specification) — the same `SKILL.md` format works across [many agents](https://agentskills.io/clients) (e.g. [pi](https://github.com/mariozechner/pi-coding-agent), [Claude Code](https://docs.anthropic.com/en/docs/claude-code), [GitHub Copilot](https://github.blog/changelog/2025-12-18-github-copilot-now-supports-agent-skills/), [Cursor](https://cursor.com/), [Amp](https://ampcode.com/)). Note that agents discover skills from different directories (e.g. `.claude/skills/`, `.github/skills/`). If your agent doesn't pick them up, try renaming `.agents/` to its expected directory (e.g. `mv .agents .claude` for Claude Code).
+
+| Skill | Description |
+| --- | --- |
+| `nvim-plugin` | Plugin development best practices and patterns |
+| `nvim-test` | Execute tests and diagnose failures |
+| `nvim-doc` | Write and update vimdoc help documentation |
+| `nvim-commit` | Create conventional commits for release-please |
+| `nvim-help` | Search Neovim's built-in `:help` documentation |
 
 ## 🚀 Usage
 
