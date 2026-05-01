@@ -24,6 +24,7 @@ jobs:
         with:
           directories: lua/
           checklevel: Warning
+          configpath: .luarc.json
 
   test:
     runs-on: ubuntu-latest
