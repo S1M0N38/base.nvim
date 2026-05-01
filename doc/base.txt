@@ -17,7 +17,8 @@ Table of contents:
 5. COMMANDS: Commands provided by the template.                 |base-commands|
 6. API: Exposed functions and development interfaces.                |base-api|
 7. DEVELOPMENT: Testing, building, and release workflows.    |base-development|
-8. TROUBLESHOOTING: Common issues and solutions.         |base-troubleshooting|
+8. CI/CD TOKENS: Secrets and tokens for GitHub Actions.       |base-tokens|
+9. TROUBLESHOOTING: Common issues and solutions.         |base-troubleshooting|
 
 ================================================================================
 FEATURES                                                        *base-features*
@@ -311,6 +312,64 @@ Use conventional commit format for automatic versioning:
 
 A more detailed explanation for conventional commits can be found at
 https://www.conventionalcommits.org/.
+
+================================================================================
+CI/CD TOKENS                                                    *base-tokens*
+
+The CI/CD workflows require the following secrets to be configured in your
+GitHub repository. Navigate to Settings > Secrets and variables > Actions and
+add each secret as a repository secret.
+
+GITHUB_TOKEN: ~
+
+Automatically provided by GitHub Actions. No manual setup required.
+Used by the CI workflow for StyLua formatting checks.
+
+PAT (Personal Access Token): ~
+
+A Fine-grained Personal Access Token used by release-please to create
+release pull requests and GitHub releases. Using a PAT instead of the
+default `GITHUB_TOKEN` ensures that release PRs trigger other workflow
+runs (e.g., CI checks on the PR).
+
+To create a Fine-grained PAT:
+
+1. Go to https://github.com/settings/personal-access-tokens/new
+2. Set a descriptive name (e.g., "release-please")
+3. Set expiration as needed
+4. Under "Repository access", select "Only select repositories"
+   and choose your plugin repository
+5. Under "Permissions" > "Repository permissions", grant:
+   - Contents: Read and write
+   - Pull requests: Read and write
+6. Generate the token and copy the value
+7. Add it as the `PAT` secret in your repository settings
+
+You may also need to enable "Allow GitHub Actions to create and approve
+pull requests" under Settings > Actions > General.
+
+LUAROCKS_API_KEY: ~
+
+An API key from luarocks.org used by luarocks-tag-release to automatically
+publish your plugin to LuaRocks when a release is created.
+
+To obtain a LuaRocks API key:
+
+1. Create an account at https://luarocks.org
+2. Go to Settings > API Keys
+   (https://luarocks.org/settings/api-keys)
+3. Generate a new API key
+4. Add it as the `LUAROCKS_API_KEY` secret in your repository settings
+
+Summary: ~
+
+>text
+  Secret name        Used by                Setup required
+  ----------------------------------------------------------------------
+  GITHUB_TOKEN       StyLua (ci.yml)        Automatic
+  PAT                release-please         Manual (Fine-grained PAT)
+  LUAROCKS_API_KEY   luarocks-tag-release   Manual (luarocks.org)
+<
 
 ================================================================================
 TROUBLESHOOTING                                          *base-troubleshooting*
