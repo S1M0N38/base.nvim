@@ -58,7 +58,7 @@ Testing Framework: ~
 
   - mini.test framework with child-process isolation
   - Test files in tests/ directory with automated discovery
-  - Headless Neovim test runner (tests/runner.lua)
+  - lazy.minit test runner (tests/minit.lua)
 
 Documentation System: ~
 
@@ -90,13 +90,17 @@ REQUIREMENTS                                                *base-requirements*
 Before using base.nvim as a template, ensure you have the following:
 
 - Neovim ≥ 0.12.2
-- luarocks (https://luarocks.org/) for package management
-- mini.test (https://github.com/echasnovski/mini.test) for testing
-
-For development workflow:
-- lazy.nvim (https://github.com/folke/lazy.nvim) for plugin management
-- lazydev.nvim (https://github.com/folke/lazydev.nvim) for Lua LSP setup
 - StyLua (https://github.com/JohnnyMorganz/StyLua) for code formatting
+  and linting
+- LuaLS (https://github.com/LuaLS/lua-language-server) for type checking
+  via LuaCATS annotations
+- git (https://git-scm.com/) for version control and lazy.nvim bootstrap
+- Make (https://www.gnu.org/software/make/) for build and test commands
+
+Optional: ~
+
+- lazydev.nvim (https://github.com/folke/lazydev.nvim) for Lua LSP
+  configuration during plugin development
 
 ================================================================================
 INSTALLATION                                                *base-installation*
@@ -239,7 +243,7 @@ base.nvim includes a development workflow for plugin creation:
 
 Testing: ~
 
-Run tests using mini.test:
+Run tests using mini.test via lazy.minit:
 >bash
   # Run all tests
   make test
@@ -248,7 +252,7 @@ Run tests using mini.test:
   make test-one MODULE=base
 
   # Run explicit file
-  nvim --headless -l tests/runner.lua -- tests/test_base.lua
+  nvim -l tests/minit.lua --minitest tests/base_spec.lua
 <
 
 Health Checks: ~
@@ -278,8 +282,19 @@ The template uses StyLua for consistent Lua code formatting:
 <
 
 Formatting settings are defined in `stylua.toml` (2-space indentation,
-double quotes, 120 column width, Unix line endings). An `.editorconfig` file
-is also provided for consistency across other editors and tools.
+double quotes, 120 column width, Unix line endings).
+
+Generate Help Tags: ~
+
+After modifying `doc/base.txt`, regenerate the tags file:
+>vim
+  :helptags doc/
+<
+
+Or from the command line:
+>bash
+  nvim -c "helptags doc/" -c "q"
+<
 
 Release Automation: ~
 
@@ -287,7 +302,7 @@ The template includes automated workflows for:
 - Running tests on every push (GitHub Actions)
 - Type checking with LuaLS
 - Automated releases based on conventional commits
-- LuaRocks package publishing
+- LuaRocks package publishing via release-please
 
 Use conventional commit format for automatic versioning:
 - `feat:` for new features (minor version bump)
