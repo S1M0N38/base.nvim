@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: JohnnyMorganz/stylua-action@v4
+      - uses: JohnnyMorganz/stylua-action@v5
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           version: "2.4.1"
           args: --check lua/ tests/
 
@@ -19,10 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: mrcjkb/lua-typecheck-action@v2
+      - uses: mrcjkb/lua-typecheck-action@v1.1.0
         with:
           directories: lua/
-          level: Warning
+          checklevel: Warning
 
   test:
     runs-on: ubuntu-latest
@@ -35,5 +36,7 @@ jobs:
         with:
           neovim: true
           version: ${{ matrix.nvim_version }}
+      - name: Install luarocks
+        run: sudo apt-get update && sudo apt-get install -y luarocks
       - name: Run tests
         run: nvim -l tests/minit.lua --minitest
