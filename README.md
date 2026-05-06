@@ -91,6 +91,7 @@ This template ships with [Agent Skills](https://agentskills.io/) in `.agents/ski
 
 | Skill | Description |
 | --- | --- |
+| `nvim-init` | Initialize plugin project and verify development environment |
 | `nvim-plugin` | Plugin development best practices and patterns |
 | `nvim-test` | Execute tests and diagnose failures |
 | `nvim-doc` | Write and update vimdoc help documentation |
