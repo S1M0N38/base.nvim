@@ -1,5 +1,27 @@
 # Changelog
 
+## [3.0.0](https://github.com/S1M0N38/base.nvim/compare/v2.0.1...v3.0.0) (2026-05-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **docs:** v3.0 ships with built-in Agent Skills for AI coding agents. Plugins derived from this template now include specialized skills in .agents/skills/ for plugin development, testing, documentation, and commit conventions.
+
+### Features
+
+* add mini.test framework with Makefile and StyLua config ([58ab17f](https://github.com/S1M0N38/base.nvim/commit/58ab17f14651e031ac4d4f307b7efdf76c369773))
+* add util module for plugin notifications ([836e41a](https://github.com/S1M0N38/base.nvim/commit/836e41af0c888e4314fc88668a85667093d020e7))
+* **docs:** add agent skills as a first-class feature ([ba1187a](https://github.com/S1M0N38/base.nvim/commit/ba1187a2c492753cb9d721c877182293fd4bf74d))
+* **init:** add nvim-init skill for plugin project initialization ([5ec9048](https://github.com/S1M0N38/base.nvim/commit/5ec9048c9d0e3f5a3d61b35eed029d541a65281f))
+* **init:** guard against double setup ([1bef51b](https://github.com/S1M0N38/base.nvim/commit/1bef51b322eb5251aac524a1136adb41824b131b))
+* **makefile:** add typecheck target with lua-language-server ([8482c16](https://github.com/S1M0N38/base.nvim/commit/8482c16b57710685861e5372916b72d1309871b0))
+* **skills:** add nvim-test skill for neovim plugin testing ([2081d6e](https://github.com/S1M0N38/base.nvim/commit/2081d6e6ca1e99926d2d9b2519f908052e89d103))
+
+
+### Bug Fixes
+
+* **health:** check that setup() was called ([fc3f8cd](https://github.com/S1M0N38/base.nvim/commit/fc3f8cd740df2b7ff4e5c651622e25305b657e23))
+
 ## [2.0.1](https://github.com/S1M0N38/base.nvim/compare/v2.0.0...v2.0.1) (2026-02-09)
 
 
