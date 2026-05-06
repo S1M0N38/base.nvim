@@ -33,7 +33,10 @@ Starting a plugin shouldn't mean reinventing project structure and CI pipelines 
 - CI with lint, typecheck, and test (stable + nightly)
 - Automated releases via release-please with GitHub and LuaRocks publishing
 - Health checks and vimdoc documentation
-- Agent Skills for AI-assisted development
+- **Agent Skills for AI-assisted development** (`.agents/skills/`)
+
+> [!NOTE]
+> **v3.0** ships with built-in Agent Skills for AI coding agents. Plugins derived from this template now include specialized skills for plugin development, testing, documentation, and commit conventions. See the [AI Coding Agent](#-ai-coding-agent) section for details.
 
 
 ## ⚡️ Requirements
