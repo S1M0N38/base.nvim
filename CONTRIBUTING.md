@@ -15,7 +15,7 @@ Thank you for your interest in contributing to base.nvim! This template aims to 
 | Tool | Version | Required for | Install |
 |------|---------|--------------|---------|
 | [Neovim](https://github.com/neovim/neovim) | ≥ 0.12.2 | tests, dev | [releases](https://github.com/neovim/neovim/releases) |
-| [StyLua](https://github.com/JohnnyMorganz/StyLua) | 0.20+ | lint, format | [releases](https://github.com/JohnnyMorganz/StyLua/releases) |
+| [StyLua](https://github.com/JohnnyMorganz/StyLua) | 2.4.1 | lint, format | [releases](https://github.com/JohnnyMorganz/StyLua/releases) |
 | [lua-language-server](https://github.com/LuaLS/lua-language-server) | latest | type annotations in editor | [releases](https://github.com/LuaLS/lua-language-server/releases) |
 
 ### Clone and verify

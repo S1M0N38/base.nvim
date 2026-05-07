@@ -6,6 +6,8 @@ test:
 test-one:
 	nvim -l tests/minit.lua --minitest tests/$(MODULE)_spec.lua
 
+STYLUA_VERSION := 2.4.1
+
 lint:
 	stylua --check lua/ tests/
 
