@@ -1,8 +1,13 @@
 {
   "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
   "runtime.version": "LuaJIT",
-  "diagnostics.globals": ["vim"],
-  "workspace.library": ["$VIM/runtime/lua", "${3rd}/luv/library"],
+  "workspace.library": [
+    "${env:VIMRUNTIME}",
+    "$VIM/runtime/lua",
+    "${3rd}/luv/library",
+    "${3rd}/luassert/library"
+  ],
   "workspace.checkThirdParty": false,
+  "diagnostics.libraryFiles": "Disable",
   "type.castTypeToAny": "Disable"
 }
